@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://g0xsloqsre7b"]
+[gd_scene load_steps=17 format=3 uid="uid://g0xsloqsre7b"]
 
 [ext_resource type="Script" uid="uid://7pqxc45dd131" path="res://actors/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="2_1yqc4"]
@@ -437,6 +437,9 @@ _data = {
 radius = 32.0
 height = 128.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kjkj0"]
+radius = 144.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
@@ -501,5 +504,15 @@ debug_color = Color(0.993769, 0, 0.232595, 0.42)
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="InteractRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
+position = Vector2(0, 48)
+shape = SubResource("CircleShape2D_kjkj0")
+
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="body_entered" from="InteractRange" to="." method="_on_interact_range_body_entered"]
+[connection signal="body_exited" from="InteractRange" to="." method="_on_interact_range_body_exited"]

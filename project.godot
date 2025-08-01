@@ -18,6 +18,10 @@ config/icon="res://assets/icon.svg"
 [global_group]
 
 player=""
+door=""
+enemy=""
+main=""
+room=""
 
 [gui]
 
@@ -67,3 +71,4 @@ attack={
 2d_physics/layer_1="Wall"
 2d_physics/layer_2="Actor_Collision"
 2d_physics/layer_3="Actor_Hitbox"
+2d_physics/layer_4="Interact"
