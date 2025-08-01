@@ -9,7 +9,7 @@ var loop_path := "res://blocks/loop.gd"
 @onready var player:Player = %Player
 @onready var code_window:CodeWindow = $CodeWindow
 
-var calls:int = 0
+var stack_count:int = 0
 var n:int = 1
 var loop_arr:Array[Block] = []
 
@@ -41,3 +41,7 @@ func update_text():
 	for block:Block in loop_arr:
 		text += "\t" + block.text
 	code_window.set_loop_text(text)
+
+func increment_stack_count():
+	stack_count += 1
+	code_window.set_stack_count(stack_count)

@@ -1,18 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqovoupmlsoif"]
+[gd_scene load_steps=8 format=3 uid="uid://bqovoupmlsoif"]
 
 [ext_resource type="Script" uid="uid://dqpxncm5y45go" path="res://actors/enemy.gd" id="1_c6xed"]
-[ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://icon.svg" id="2_8yred"]
+[ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="2_c6xed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_34jws"]
-radius = 64.0
+radius = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8yred"]
+radius = 32.0
+height = 144.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_34jws"]
+radius = 1.85697
+height = 17.1971
+
+[sub_resource type="Animation" id="Animation_c6xed"]
+resource_name = "attack"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yred"]
+_data = {
+&"attack": SubResource("Animation_c6xed")
+}
 
 [node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_c6xed")
 
 [node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("2_8yred")
+position = Vector2(0, -88)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_c6xed")
+hframes = 29
+vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -24)
 shape = SubResource("CircleShape2D_34jws")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Hitbox" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -72)
+shape = SubResource("CapsuleShape2D_8yred")
+debug_color = Color(0.999912, 0, 0.0965685, 0.42)
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(0, -72)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(88, 0)
+scale = Vector2(25.8485, 7.44309)
+shape = SubResource("CapsuleShape2D_34jws")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8yred")
+}
+
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

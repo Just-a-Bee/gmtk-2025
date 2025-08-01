@@ -4,7 +4,7 @@ func _init():
 	text = "loop()\n"
 
 func execute():
-	main.calls += 1
+	main.increment_stack_count()
 	
 	await make_timer(line_execute_time)
 	main.loop()
