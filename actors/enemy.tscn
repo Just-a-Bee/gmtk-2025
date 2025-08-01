@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bqovoupmlsoif"]
 
-[ext_resource type="Script" uid="uid://dqpxncm5y45go" path="res://actors/enemy.gd" id="1_c6xed"]
+[ext_resource type="Script" uid="uid://dvwh1ofkqkpt" path="res://actors/spider.gd" id="1_8yred"]
 [ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="2_8yred"]
 [ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="2_c6xed"]
 
@@ -103,25 +103,25 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 y_sort_enabled = true
-position = Vector2(0, 72)
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_c6xed")
+script = ExtResource("1_8yred")
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(0, -88)
+position = Vector2(0.400001, -12)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_c6xed")
 hframes = 29
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0.400002, 52)
 shape = SubResource("CircleShape2D_34jws")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Hitbox" type="StaticBody2D" parent="."]
+position = Vector2(0.400002, 76)
 collision_layer = 4
 collision_mask = 0
 
@@ -131,7 +131,7 @@ shape = SubResource("CapsuleShape2D_8yred")
 debug_color = Color(0.999912, 0, 0.0965685, 0.42)
 
 [node name="AttackArea" type="Area2D" parent="."]
-position = Vector2(0, -72)
+position = Vector2(0.400002, 4)
 collision_layer = 0
 collision_mask = 4
 

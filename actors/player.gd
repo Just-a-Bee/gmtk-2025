@@ -125,7 +125,8 @@ func interact():
 func _on_attack_hitbox_body_entered(body):
 	if body.get_parent() is Enemy:
 		body.get_parent().take_damage(attack_power)
-
+	if body is Enemy:
+		body.take_damage(attack_power)
 
 func _on_idle_timer_timeout():
 	if is_attacking or is_rolling:
