@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://g0xsloqsre7b"]
+[gd_scene load_steps=16 format=3 uid="uid://g0xsloqsre7b"]
 
 [ext_resource type="Script" uid="uid://7pqxc45dd131" path="res://actors/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="2_1yqc4"]
@@ -208,7 +208,7 @@ tracks/2/path = NodePath(".:is_attacking")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -339,11 +339,98 @@ tracks/8/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kjkj0"]
+load_path = "res://.godot/imported/idle.png-600a6709c1a21ab5f528af7b11a02560.ctex"
+
+[sub_resource type="Animation" id="Animation_33vod"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:run_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 40]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOrigin/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CompressedTexture2D_kjkj0")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerOrigin/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [41]
+}
+
+[sub_resource type="Animation" id="Animation_tue77"]
+resource_name = "run"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerOrigin/Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerOrigin/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1yqc4")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:run_frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hqtel"]
 _data = {
 &"RESET": SubResource("Animation_i3pqv"),
 &"attack": SubResource("Animation_hqtel"),
-&"roll": SubResource("Animation_onrkg")
+&"idle": SubResource("Animation_33vod"),
+&"roll": SubResource("Animation_onrkg"),
+&"run": SubResource("Animation_tue77")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_esgq3"]
@@ -367,7 +454,6 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_1yqc4")
 hframes = 28
 vframes = 3
-frame = 56
 
 [node name="SwordOrigin" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -399,8 +485,6 @@ texture = ExtResource("2_onrkg")
 position = Vector2(0, 64)
 shape = SubResource("CapsuleShape2D_1yqc4")
 
-[node name="AttackCooldown" type="Timer" parent="."]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_hqtel")
@@ -414,6 +498,8 @@ collision_mask = 0
 shape = SubResource("CapsuleShape2D_esgq3")
 debug_color = Color(0.993769, 0, 0.232595, 0.42)
 
-[node name="Node" type="Node" parent="."]
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+var is_idle := true
 
 var attack_power = 10
 var defense = 10
@@ -25,6 +26,9 @@ func _input(event):
 		if can_attack():
 			attack()
 
+func _ready():
+	$AnimationPlayer.play("idle")
+
 func _physics_process(delta):
 	if is_rolling:
 		velocity = velocity.normalized()*roll_speed
@@ -33,12 +37,12 @@ func _physics_process(delta):
 		var target_velocity = get_input_dir()*max_speed
 		velocity = velocity.move_toward(target_velocity, acceleration*delta)
 		# animaiton
-		run_frame += velocity.length()/400
-		if run_frame > 27:
-			run_frame -= 27
+		if velocity.length() > 0:
+			run_frame += velocity.length()/400
+			if run_frame > 27:
+				run_frame -= 27
 		move_and_slide()
 	
-	print(velocity.y)
 	# update sprite frame
 	%Sprite2D.frame_coords.x = floor(run_frame)
 	if velocity.y > 200 and velocity.y > abs(velocity.x):
@@ -51,8 +55,6 @@ func _physics_process(delta):
 		%Sprite2D.scale.x = .4
 	if velocity.x < -100:
 		%Sprite2D.scale.x = -.4
-	
-	
 	# update sword pos
 	# TODO: make sword show under player when up
 	var mouse_pos := get_global_mouse_position()
@@ -63,6 +65,14 @@ func _physics_process(delta):
 	%SwordOrigin.position = Vector2(cos(sword_angle)*sword_offset_x, 64+sin(sword_angle)*sword_offset_y)
 	%SwordOrigin.get_child(0).rotation_degrees = lerp(0, 40, cos(sword_angle))
 	
+	if velocity != Vector2.ZERO:
+		$IdleTimer.stop()
+		if is_idle:
+			$AnimationPlayer.play("run")
+			is_idle = false
+		
+	elif $IdleTimer.is_stopped():
+		$IdleTimer.start()
 	
 
 func get_input_dir()->Vector2:
@@ -79,6 +89,7 @@ func can_roll()->bool:
 	return true
 
 func begin_roll():
+	is_rolling = true
 	var mouse_pos := get_global_mouse_position()
 	velocity = position.direction_to(mouse_pos)
 	$AnimationPlayer.play("roll")
@@ -100,3 +111,8 @@ func attack():
 func _on_attack_hitbox_body_entered(body):
 	if body.get_parent() is Enemy:
 		body.get_parent().take_damage(attack_power)
+
+
+func _on_idle_timer_timeout():
+	$AnimationPlayer.play("idle")
+	is_idle = true

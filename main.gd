@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name Main
 
 var timeout := "res://blocks/timeout.gd"

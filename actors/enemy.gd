@@ -34,4 +34,4 @@ func _on_attack_area_body_entered(body):
 		attack()
 
 func attack():
-	print("hi ya")
+	pass
