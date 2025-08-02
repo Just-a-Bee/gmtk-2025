@@ -8,6 +8,7 @@ func enemy_died():
 	for enemy in get_tree().get_nodes_in_group("enemy"):
 		if enemy.health > 0: enemies_alive = true
 	if not enemies_alive:
+		get_tree().get_first_node_in_group("main").room_cleared()
 		spawn_item()
 
 func spawn_item():

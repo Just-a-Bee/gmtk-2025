@@ -2,7 +2,7 @@ extends Control
 class_name Main
 
 var timeout := "res://blocks/timeout.gd"
-var powerup := "res://blocks/powerup.gd"
+var powerup := "res://blocks/damage_up.gd"
 var increase_n := "res://blocks/increase_n.gd"
 var loop_path := "res://blocks/loop.gd"
 
@@ -13,7 +13,7 @@ var stack_count:int = 0
 var n:int = 1
 var loop_arr:Array[Block] = []
 var num_upgrades = 3
-
+var do_execute_loop := true
 
 func _ready():
 	add_block(load(increase_n).new())
@@ -37,7 +37,8 @@ func loop():
 		current_block = 0
 		code_window.set_sprite_offset(0)
 		await get_tree().create_timer(Block.line_execute_time).timeout
-	loop()
+	if do_execute_loop:
+		loop()
 
 
 func add_block(block:Block, index = -1):
@@ -60,6 +61,7 @@ func increment_stack_count():
 
 var upgrades_shown:Array = []
 func show_upgrades():
+	upgrades_shown.clear()
 	for i in num_upgrades:
 		upgrades_shown.push_back(Upgrades.pick_upgrade())
 		$UpgradeMenu.display_upgrade(i, load(upgrades_shown[i].upgrade).new())
@@ -73,3 +75,33 @@ func select_upgrade(index, object, insert_index):
 	$AnimationPlayer.play("hide_upgrades")
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
+
+func room_cleared():
+	do_execute_loop = false
+	code_window.pause()
+
+func next_room():
+	# play some sort of fade out animation
+	var room = get_tree().get_first_node_in_group("room")
+	room.get_parent().remove_child(room)
+	room.queue_free()
+	var new_room = Rooms.get_next_room()
+	new_room = load(new_room).instantiate()
+	$SubViewportContainer/SubViewport/Node2D.add_child(new_room)
+	player.position = new_room.get_node("PlayerSpawn").position
+	do_execute_loop = true
+	code_window.unpause()
+	loop()
+	
+	# play a fade in
+
+var boss
+func show_boss_bar(b:Enemy):
+	boss = b
+	$BossBar.show()
+	$BossBar.max_value = boss.health
+	$BossBar.value = boss.health
+	boss.hit.connect(self._on_boss_hit)
+func _on_boss_hit():
+	$BossBar.value = boss.health
+	

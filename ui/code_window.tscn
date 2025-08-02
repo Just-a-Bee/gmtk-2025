@@ -10,11 +10,13 @@ bg_color = Color(0.1, 0.1, 0.1, 1)
 offset_left = 832.0
 offset_right = 1152.0
 offset_bottom = 448.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7s738")
 script = ExtResource("1_7s738")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
@@ -28,12 +30,14 @@ texture = ExtResource("1_h5onb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Loop" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[color=GREEN]func loop():
@@ -49,11 +53,13 @@ tab_size = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="StackBars" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 bbcode_enabled = true
 text = "[color=RED]||||||||||||||||"
 fit_content = true
@@ -62,3 +68,24 @@ fit_content = true
 unique_name_in_owner = true
 layout_mode = 2
 text = "0/16"
+
+[node name="PausePanel" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 384)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PausePanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="Label" type="RichTextLabel" parent="PausePanel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[color=YELLOW]Room Clear;
+Execution Paused"
+vertical_alignment = 1

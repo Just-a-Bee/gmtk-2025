@@ -13,8 +13,15 @@ func set_sprite_offset(line:int):
 
 func increment_sprite_offset():
 	%Indicator.position.y += line_offset
+func decrement_sprite_offset():
+	%Indicator.position.y -= line_offset
 
 func set_stack_count(count:int):
 	%StackLabel.text = str(count) + "/" + str(stack_max)
 	%StackBars.text = "[color=RED]" + "|".repeat(count) + "[/color]" + "|".repeat(stack_max-count)
 	
+
+func pause():
+	$PausePanel.show()
+func unpause():
+	$PausePanel.hide()

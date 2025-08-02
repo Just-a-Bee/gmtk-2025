@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 
 Upgrades="*res://upgrades.gd"
 GameStats="*res://game_stats.gd"
+Rooms="*res://rooms.gd"
 
 [global_group]
 
@@ -76,3 +77,7 @@ attack={
 2d_physics/layer_2="Actor_Collision"
 2d_physics/layer_3="Actor_Hitbox"
 2d_physics/layer_4="Interact"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

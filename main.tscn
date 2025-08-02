@@ -4,38 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://g0xsloqsre7b" path="res://actors/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b64cl8aeweoxr" path="res://ui/code_window.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cei7kpgfyfchu" path="res://player_camera.gd" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://c0nm0bkj6a2yj" path="res://rooms/room.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cyg5j0a7u218e" path="res://rooms/boss_room.tscn" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://brdj4i3iq7du5" path="res://ui/upgrade_menu.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://progress_bar.gd" id="7_272bh"]
-
-[sub_resource type="Animation" id="Animation_kek77"]
-resource_name = "show_upgrades"
-length = 3.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Greyout:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UpgradeMenu:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.9, 1.1),
-"transitions": PackedFloat32Array(0.482968, 4.14106, 1),
-"update": 0,
-"values": [Vector2(64, -512), Vector2(64, 150), Vector2(64, 128)]
-}
 
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
@@ -117,6 +88,47 @@ tracks/2/keys = {
 "values": [Vector2(64, 128), Vector2(64, 300)]
 }
 
+[sub_resource type="Animation" id="Animation_kek77"]
+resource_name = "show_upgrades"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Greyout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UpgradeMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.9, 1.1),
+"transitions": PackedFloat32Array(0.482968, 4.14106, 1),
+"update": 0,
+"values": [Vector2(64, -512), Vector2(64, 150), Vector2(64, 128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UpgradeMenu:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_efxa6"]
 _data = {
 &"RESET": SubResource("Animation_4c57u"),
@@ -149,15 +161,15 @@ position = Vector2(88, 320)
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Node2D/Player"]
 script = ExtResource("3_7mycd")
 
-[node name="Room" parent="SubViewportContainer/SubViewport/Node2D" groups=["room"] instance=ExtResource("4_7mycd")]
+[node name="Room" parent="SubViewportContainer/SubViewport/Node2D" instance=ExtResource("4_272bh")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -2
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 672.0
-mouse_filter = 2
-color = Color(0.00638181, 0.124848, 7.4001e-07, 1)
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(832, 0)
+
+[node name="CodeWindow" parent="Node2D" instance=ExtResource("3_1bvp3")]
+unique_name_in_owner = true
+offset_left = 0.0
+offset_right = 320.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -169,6 +181,26 @@ mouse_filter = 2
 value = 50.0
 show_percentage = false
 script = ExtResource("7_272bh")
+
+[node name="BossBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 608.0
+offset_right = 1024.0
+offset_bottom = 631.0
+mouse_filter = 2
+max_value = 300.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="BossBar"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 126.0
+offset_bottom = 3.0
+theme_override_font_sizes/font_size = 30
+text = "Boolean"
 
 [node name="Greyout" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -191,12 +223,3 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_efxa6")
 }
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(832, 0)
-
-[node name="CodeWindow" parent="Node2D" instance=ExtResource("3_1bvp3")]
-unique_name_in_owner = true
-offset_left = 0.0
-offset_right = 320.0
-mouse_filter = 2

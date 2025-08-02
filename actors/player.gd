@@ -8,9 +8,9 @@ var is_idle := true
 var max_health := 100
 var health := 100
 
-var attack_power = 10
-var defense = 10
+var damage = 10
 @export var max_speed = 300
+var speed_increase = 0
 var attack_velocity = 400
 
 @export var run_frame = 0
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		velocity = velocity.normalized()*roll_speed
 		move_and_collide(velocity*delta)
 	else: # walking
-		var target_velocity = get_input_dir()*max_speed
+		var target_velocity = get_input_dir()*(max_speed + speed_increase)
 		velocity = velocity.move_toward(target_velocity, acceleration*delta)
 		# animaiton
 		if velocity.length() > 0:
@@ -61,7 +61,6 @@ func _physics_process(delta):
 	if velocity.x < -100:
 		%Sprite2D.scale.x = -.4
 	# update sword pos
-	# TODO: make sword show under player when up
 	var mouse_pos := get_global_mouse_position()
 	var sword_angle := get_angle_to(mouse_pos)
 	var sword_offset_x = 32
@@ -115,6 +114,7 @@ func attack():
 	velocity = attack_dir*attack_velocity
 	%AttackHitbox.rotation = attack_angle
 	$AnimationPlayer.play("attack")
+	is_attacking = true
 
 func interact():
 	if interactible.has_method("interact"):
@@ -125,9 +125,9 @@ func interact():
 
 func _on_attack_hitbox_body_entered(body):
 	if body.get_parent() is Enemy:
-		body.get_parent().take_damage(attack_power)
+		body.get_parent().take_damage(damage)
 	if body is Enemy:
-		body.take_damage(attack_power)
+		body.take_damage(damage)
 
 func _on_idle_timer_timeout():
 	if is_attacking or is_rolling:
@@ -136,9 +136,8 @@ func _on_idle_timer_timeout():
 	is_idle = true
 
 func take_damage(damage:int):
-	health -= damage
+	health -= damage + GameStats.all_damage
 	damage_taken.emit()
-	print(health)
 
 
 func _on_interact_range_body_entered(body):

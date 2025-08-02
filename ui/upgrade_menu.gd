@@ -3,6 +3,8 @@ extends Control
 @onready var main:Main = get_parent()
 
 func display_upgrade(index, upgrade):
+	options.show()
+	$CodeEditorWindow.hide()
 	var option = options.get_child(index)
 	option.set_text(upgrade.type, upgrade.get_text())
 	option.upgrade = upgrade
@@ -45,3 +47,4 @@ func _input(event):
 
 func insert_code():
 	get_parent().select_upgrade(selected_index, selected_upgrade, insert_index)
+	is_inserting_code = false

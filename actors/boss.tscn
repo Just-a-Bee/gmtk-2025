@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfhf4eijstbph"]
+
+[ext_resource type="Script" uid="uid://dqx8d6qlyyi8y" path="res://boss.gd" id="1_ttay5"]
+[ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="2_0p0qu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkmvd"]
+radius = 64.0
+
+[node name="Boss" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 6
+collision_mask = 2
+script = ExtResource("1_ttay5")
+
+[node name="Forcefield" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.419608)
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(1.3125, 1.375)
+texture = ExtResource("2_0p0qu")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_0p0qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qkmvd")
+
+[node name="AttackTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="ForcefieldTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ForcefieldTimer" to="." method="_on_forcefield_timer_timeout"]

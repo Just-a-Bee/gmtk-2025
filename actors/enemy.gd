@@ -1,14 +1,15 @@
 extends CharacterBody2D
 class_name Enemy
 
-
-var health = 1
+signal hit
+var health = 50
 var speed = 100
 
 
 
 func take_damage(n):
-	health = max(health-n, 0)
+	health = max(health-n-GameStats.all_damage, 0)
+	hit.emit()
 	if health == 0:
 		die()
 

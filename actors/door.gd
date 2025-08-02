@@ -6,5 +6,5 @@ func unlock():
 	print("doors unlocked")
 
 func interact():
-	print("You clikced on a door")
+	get_tree().get_first_node_in_group("main").next_room()
 	
