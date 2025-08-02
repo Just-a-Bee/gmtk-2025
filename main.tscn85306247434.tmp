@@ -151,6 +151,12 @@ script = ExtResource("3_7mycd")
 
 [node name="Room" parent="SubViewportContainer/SubViewport/Node2D" groups=["room"] instance=ExtResource("4_7mycd")]
 
+[node name="CodeWindow" parent="." instance=ExtResource("3_1bvp3")]
+layout_mode = 0
+offset_left = 0.0
+offset_right = 320.0
+mouse_filter = 2
+
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2
 layout_mode = 0
@@ -191,12 +197,3 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_efxa6")
 }
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(832, 0)
-
-[node name="CodeWindow" parent="Node2D" instance=ExtResource("3_1bvp3")]
-unique_name_in_owner = true
-offset_left = 0.0
-offset_right = 320.0
-mouse_filter = 2

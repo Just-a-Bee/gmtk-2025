@@ -4,9 +4,11 @@ class_name Block
 
 const line_execute_time := .5
 
-var main
+var main:Main
 
+var type = "Code Block"
 var text = "this is a block of code\n"
+var tooltip = "this block of code does this!"
 var lines := 1
 var current_line := 0
 var is_finished := false
@@ -22,3 +24,6 @@ func make_timer(time):
 func reset():
 	current_line = 0
 	is_finished = false
+
+func get_text():
+	return text + "\n" + tooltip

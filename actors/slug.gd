@@ -8,7 +8,7 @@ var bullet_packed := preload("res://actors/slug_bullet.tscn")
 func _ready():
 	$AnimatedSprite2D.play("walk")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if $RayCast2D.is_colliding():
 		direction = -direction
 		scale.x = -scale.x

@@ -2,6 +2,7 @@ extends Block
 
 func _init():
 	text = "n += 1\n"
+	tooltip = "Permanently increases the value of 'n' by one"
 
 func execute():
 	

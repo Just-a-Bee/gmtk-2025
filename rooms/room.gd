@@ -16,6 +16,7 @@ func spawn_item():
 	call_deferred("add_child", item)
 
 func item_picked_up():
+	get_tree().get_first_node_in_group("main").show_upgrades()
 	unlock_doors()
 
 func unlock_doors():

@@ -5,6 +5,7 @@ class_name Spider
 @export var is_attacking := false
 
 var attack_range = 100
+@export var run_frame := 0.0
 
 func _physics_process(_delta):
 	
@@ -22,8 +23,21 @@ func _physics_process(_delta):
 
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 	
-
-	
+	if not is_attacking:
+		run_frame += velocity.length()/100
+		if run_frame >= $Sprite2D.hframes:
+			run_frame -= $Sprite2D.hframes
+	$Sprite2D.frame_coords.x = floor(run_frame)
+	if velocity.y > 50 and velocity.y > abs(velocity.x):
+		$Sprite2D.frame_coords.y = 1
+	elif velocity.y < -50 and abs(velocity.y) > abs(velocity.x):
+		$Sprite2D.frame_coords.y = 2
+	elif abs(velocity.x) > 50:
+		$Sprite2D.frame_coords.y = 0
+	if velocity.x > 50:
+		$Sprite2D.scale.x = .4
+	if velocity.x < -50:
+		$Sprite2D.scale.x = -.4
 	move_and_slide()
 
 func handle_attack(player:Player):

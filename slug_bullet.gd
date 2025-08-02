@@ -11,7 +11,7 @@ func _on_lifetime_timeout():
 	die()
 
 func die():
-	get_parent().remove_child(self)
+	get_parent().call_deferred("remove_child", self)
 	queue_free()
 
 

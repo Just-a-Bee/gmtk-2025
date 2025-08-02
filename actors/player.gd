@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
+signal damage_taken
+
 var is_idle := true
 
 var max_health := 100
@@ -14,8 +16,6 @@ var attack_velocity = 400
 @export var run_frame = 0
 
 var acceleration = max_speed*12
-
-@export var is_invincible := false
 
 @export var roll_speed = 350
 @export var is_rolling := false
@@ -73,7 +73,8 @@ func _physics_process(delta):
 	if velocity != Vector2.ZERO:
 		$IdleTimer.stop()
 		if is_idle:
-			$AnimationPlayer.play("run")
+			if not (is_rolling or is_attacking):
+				$AnimationPlayer.play("run")
 			is_idle = false
 		
 	elif $IdleTimer.is_stopped():
@@ -136,11 +137,12 @@ func _on_idle_timer_timeout():
 
 func take_damage(damage:int):
 	health -= damage
+	damage_taken.emit()
 	print(health)
 
 
 func _on_interact_range_body_entered(body):
 	interactible = body
 
-func _on_interact_range_body_exited(body):
+func _on_interact_range_body_exited(_body):
 	interactible = null

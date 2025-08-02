@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c2v8ckhwblhdm"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c2v8ckhwblhdm"]
 
 [ext_resource type="FontFile" uid="uid://cbbrj2mqvhrv0" path="res://assets/Andale Mono.ttf" id="1_5x3i2"]
 
@@ -8,7 +8,12 @@ bg_color = Color(0.099986, 0.099986, 0.099986, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl1kw"]
 bg_color = Color(0.812359, 0, 0.113799, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu33j"]
+bg_color = Color(0.103867, 0.343018, 0.0661829, 1)
+
 [resource]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_5x3i2")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_wl1kw")
 RichTextLabel/fonts/normal_font = ExtResource("1_5x3i2")
+UpgradePanel/base_type = &"PanelContainer"
+UpgradePanel/styles/panel = SubResource("StyleBoxFlat_lu33j")

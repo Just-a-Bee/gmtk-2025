@@ -1,6 +1,6 @@
 extends Camera2D
 
-func _process(delta):
+func _process(_delta):
 	var player_pos = get_parent().position
 	var mouse_pos = get_global_mouse_position()
 	var distance = mouse_pos-player_pos
