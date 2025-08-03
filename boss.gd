@@ -12,6 +12,8 @@ var short_cooldown = 1
 var long_cooldown = 3
 var forcefield_cooldown = 8
 
+var projectile_texture = load("res://assets/bossghiubtn.png")
+
 func _ready():
 	health = 300
 	get_tree().get_first_node_in_group("main").show_boss_bar(self)
@@ -33,6 +35,8 @@ func circle_attack():
 		var bullet_offset = Vector2.LEFT.rotated(rand_angle + i * PI/6)*BULLET_DIST
 		bullet.position = position + bullet_offset
 		bullet.direction = bullet_offset.normalized()
+		bullet.get_node("Sprite2D").texture = projectile_texture
+		bullet.get_node("Sprite2D").scale = Vector2(.8,.8)
 		get_parent().add_child(bullet)
 	current_attack_number += 1
 	if current_attack_number == attack_number:
