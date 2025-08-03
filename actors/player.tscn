@@ -606,6 +606,7 @@ shape = SubResource("CapsuleShape2D_onrkg")
 
 [node name="AttackEffect" type="Sprite2D" parent="AttackHitbox"]
 visible = false
+texture_filter = 1
 position = Vector2(128, -9.09495e-13)
 rotation = 1.5708
 scale = Vector2(5.5, 5.5)
@@ -647,11 +648,11 @@ one_shot = true
 
 [node name="Attack" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_41w2c")
-volume_db = -18.0
+volume_db = -15.0
 
 [node name="Step" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ya2v2")
-volume_db = -12.0
+volume_db = -10.0
 
 [node name="Roll" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_77ki2")

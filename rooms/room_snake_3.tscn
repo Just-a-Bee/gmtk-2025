@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://sl86kr4p0t66"]
+[gd_scene load_steps=17 format=4 uid="uid://sl86kr4p0t66"]
 
 [ext_resource type="Script" uid="uid://cel26bbnbfy5r" path="res://rooms/room.gd" id="1_xyec6"]
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_t2vu1"]
@@ -149,6 +149,15 @@ physics_layer_1/collision_mask = 16
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_17aq2")
 
+[sub_resource type="Gradient" id="Gradient_3ka6e"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xyec6"]
+gradient = SubResource("Gradient_3ka6e")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
 [node name="Room" type="NavigationRegion2D" groups=["room"]]
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_7mycd")
@@ -190,3 +199,24 @@ position = Vector2(1512, 759)
 
 [node name="Spider2" parent="." instance=ExtResource("5_k5tvv")]
 position = Vector2(943, 1031)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(447, 668)
+scale = Vector2(15.9375, 15.9375)
+energy = 0.7
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_xyec6")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(1589, 542)
+scale = Vector2(15.9375, 15.9375)
+energy = 0.7
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_xyec6")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(2861, 876)
+scale = Vector2(15.9375, 15.9375)
+energy = 0.7
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_xyec6")
