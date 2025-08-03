@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://yeoq2r8pinas"]
+[gd_scene load_steps=19 format=4 uid="uid://yeoq2r8pinas"]
 
 [ext_resource type="Script" uid="uid://bgv8solrhu4xm" path="res://rooms/starting_room.gd" id="1_wr28x"]
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_xprn1"]
@@ -148,7 +148,28 @@ physics_layer_1/collision_mask = 16
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_17aq2")
 
+[sub_resource type="Gradient" id="Gradient_4r8be"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xprn1"]
+gradient = SubResource("Gradient_4r8be")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pgmiq"]
+
+[sub_resource type="Gradient" id="Gradient_bp4en"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_510at"]
+gradient = SubResource("Gradient_bp4en")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="Room" type="NavigationRegion2D" groups=["room"]]
+modulate = Color(0.666667, 0.666667, 0.666667, 1)
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_7mycd")
 script = ExtResource("1_wr28x")
@@ -187,3 +208,24 @@ offset_bottom = 386.0
 theme_override_font_sizes/font_size = 30
 text = "Left Click: Attack
 Right Click: Roll"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1203, 288)
+scale = Vector2(15.9375, 15.9375)
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_xprn1")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(446, 340)
+scale = Vector2(15.9375, 15.9375)
+energy = 0.7
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_xprn1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+material = SubResource("CanvasItemMaterial_pgmiq")
+position = Vector2(1130, 230)
+scale = Vector2(11.375, 11.375)
+texture = SubResource("GradientTexture2D_510at")

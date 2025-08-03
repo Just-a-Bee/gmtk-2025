@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://d0vsq2llpmshy"]
+[gd_scene load_steps=17 format=4 uid="uid://d0vsq2llpmshy"]
 
 [ext_resource type="Script" uid="uid://bflajyhlltioy" path="res://rooms/room_boss.gd" id="1_ikswg"]
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_ojdhv"]
@@ -151,6 +151,15 @@ sources/0 = SubResource("TileSetAtlasSource_17aq2")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikswg"]
 radius = 496.258
 
+[sub_resource type="Gradient" id="Gradient_ikswg"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ojdhv"]
+gradient = SubResource("Gradient_ikswg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
 [node name="Room" type="NavigationRegion2D" groups=["room"]]
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_7mycd")
@@ -198,5 +207,19 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1072, 888)
 shape = SubResource("CircleShape2D_ikswg")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(343, 688)
+scale = Vector2(15.9375, 15.9375)
+energy = 0.7
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_ojdhv")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(1023, 586)
+scale = Vector2(15.9375, 15.9375)
+energy = 0.7
+shadow_color = Color(0, 0, 0, 0.909804)
+texture = SubResource("GradientTexture2D_ojdhv")
 
 [connection signal="body_entered" from="Area2D" to="Boss" method="activate"]
