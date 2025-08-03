@@ -7,3 +7,7 @@ func _input(event):
 
 func load_main():
 	get_tree().change_scene_to_file("res://main.tscn")
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play(7.007)

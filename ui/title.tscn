@@ -95,3 +95,5 @@ offset_right = 1028.0
 offset_bottom = 641.0
 theme_override_font_sizes/font_size = 50
 text = "By Isaiah Sugar and Abby Smith"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

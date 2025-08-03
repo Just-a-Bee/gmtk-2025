@@ -159,3 +159,13 @@ func change_music_to_boss():
 	$Battle.stop()
 	$Boss.play()
 	$Passive.stop()
+
+
+func _on_battle_finished():
+	$Battle.play(6.115)
+	$Passive.play(6.115)
+
+
+
+func _on_boss_finished():
+	$Boss.play(15.442)

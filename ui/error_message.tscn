@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci8pbcnklttff"]
 
 [ext_resource type="Script" uid="uid://deh3csd8c0mb3" path="res://ui/error_message.gd" id="1_05o8w"]
-[ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="1_cusoq"]
+[ext_resource type="Texture2D" uid="uid://bp4xfpyonniof" path="res://assets/warning.png" id="2_05o8w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
 content_margin_bottom = 10.0
@@ -45,7 +45,10 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_cusoq")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_05o8w")
+stretch_mode = 2
 
 [node name="Label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
