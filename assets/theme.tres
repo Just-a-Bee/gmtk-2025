@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c2v8ckhwblhdm"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://c2v8ckhwblhdm"]
 
 [ext_resource type="FontFile" uid="uid://cbbrj2mqvhrv0" path="res://assets/Andale Mono.ttf" id="1_5x3i2"]
 
@@ -8,8 +8,16 @@ bg_color = Color(0.099986, 0.099986, 0.099986, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl1kw"]
 bg_color = Color(0.812359, 0, 0.113799, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu33j"]
-bg_color = Color(0.103867, 0.343018, 0.0661829, 1)
+[sub_resource type="Gradient" id="Gradient_5x3i2"]
+offsets = PackedFloat32Array(0, 0.42246)
+colors = PackedColorArray(0.0509804, 0.170588, 0.0333333, 1, 0.101961, 0.341176, 0.0666667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wl1kw"]
+gradient = SubResource("Gradient_5x3i2")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu33j"]
+texture = SubResource("GradientTexture2D_wl1kw")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5x3i2"]
 
@@ -32,7 +40,7 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_5x3i2")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_wl1kw")
 RichTextLabel/fonts/normal_font = ExtResource("1_5x3i2")
 UpgradePanel/base_type = &"PanelContainer"
-UpgradePanel/styles/panel = SubResource("StyleBoxFlat_lu33j")
+UpgradePanel/styles/panel = SubResource("StyleBoxTexture_lu33j")
 error_button/base_type = &"Button"
 error_button/font_sizes/font_size = 20
 error_button/styles/focus = SubResource("StyleBoxEmpty_5x3i2")

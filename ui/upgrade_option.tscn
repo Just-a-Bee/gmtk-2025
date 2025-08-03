@@ -66,6 +66,7 @@ offset = Vector2(-25, -25)
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
+focus_mode = 0
 flat = true
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
