@@ -601,6 +601,7 @@ animations = [{
 }]
 
 [node name="Slug" type="CharacterBody2D" groups=["enemy"]]
+rotation = -0.453786
 collision_layer = 6
 collision_mask = 19
 script = ExtResource("1_dv6ca")
@@ -616,7 +617,7 @@ sprite_frames = SubResource("SpriteFrames_0pajm")
 animation = &"attack"
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(-160, 0)
+target_position = Vector2(-100, 0)
 collision_mask = 19
 
 [node name="AttackCooldown" type="Timer" parent="."]

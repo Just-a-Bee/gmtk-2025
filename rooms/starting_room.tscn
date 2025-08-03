@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://yeoq2r8pinas"]
+[gd_scene load_steps=14 format=4 uid="uid://yeoq2r8pinas"]
 
 [ext_resource type="Script" uid="uid://bgv8solrhu4xm" path="res://rooms/starting_room.gd" id="1_wr28x"]
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_xprn1"]
 [ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/door.tscn" id="3_pgmiq"]
+[ext_resource type="PackedScene" uid="uid://bkbmrblvovusn" path="res://npc.tscn" id="4_4r8be"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
 
@@ -174,3 +175,15 @@ scale = Vector2(-1.5, 1.5)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(1192, 792)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("4_4r8be")]
+position = Vector2(1111, 342)
+
+[node name="Label" type="Label" parent="StaticBody2D"]
+offset_left = -728.0
+offset_top = 242.0
+offset_right = -296.0
+offset_bottom = 386.0
+theme_override_font_sizes/font_size = 30
+text = "Left Click: Attack
+Right Click: Roll"

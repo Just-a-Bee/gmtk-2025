@@ -1,11 +1,12 @@
 extends Enemy
 
 
-var direction = Vector2.LEFT
+var direction:Vector2
 
 var bullet_packed := preload("res://actors/slug_bullet.tscn")
 
 func _ready():
+	direction = Vector2.LEFT.rotated(rotation)
 	$Sprite2D.play("walk")
 	$AttackCooldown.start(randf_range(4,7))
 

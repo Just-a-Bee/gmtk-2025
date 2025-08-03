@@ -22,6 +22,7 @@ func _on_quit_button_up():
 	get_tree().paused = false
 	Rooms.reset_room_queue()
 	GameStats.reset()
+	Upgrades.reset_upgrade_queue()
 	get_tree().change_scene_to_file("res://ui/title.tscn")
 
 
@@ -29,4 +30,5 @@ func _on_retry_button_up():
 	get_tree().paused = false
 	Rooms.reset_room_queue()
 	GameStats.reset()
+	Upgrades.reset_upgrade_queue()
 	get_tree().change_scene_to_file("res://main.tscn")

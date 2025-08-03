@@ -74,9 +74,8 @@ func increment_stack_count():
 
 var upgrades_shown:Array = []
 func show_upgrades():
-	upgrades_shown.clear()
+	upgrades_shown = Upgrades.pick_upgrades()
 	for i in num_upgrades:
-		upgrades_shown.push_back(Upgrades.pick_upgrade())
 		$UpgradeMenu.display_upgrade(i, load(upgrades_shown[i].upgrade).new())
 	$AnimationPlayer.play("show_upgrades")
 	get_tree().paused = true
@@ -145,3 +144,13 @@ func show_deleter():
 	get_tree().paused = true
 	$UpgradeMenu.show_deleter()
 	$AnimationPlayer.play("show_upgrades")
+
+func play_dialogue():
+	get_tree().paused = true
+	$AnimationPlayer.play("show_dialogue")
+
+
+func end_dialogue():
+	$AnimationPlayer.play("hide_dialogue")
+	await $AnimationPlayer.animation_finished
+	get_tree().paused = false

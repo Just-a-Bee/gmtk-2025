@@ -145,11 +145,13 @@ func _on_idle_timer_timeout():
 	is_idle = true
 
 func take_damage(damage:int):
-	health -= damage + GameStats.all_damage
-	damage_taken.emit()
-	flash = 1
-	if health < 0:
-		die.emit()
+	if $InvTimer.is_stopped():
+		health -= damage + GameStats.all_damage
+		damage_taken.emit()
+		flash = 1
+		if health < 0:
+			die.emit()
+		$InvTimer.start()
 
 
 func _on_interact_range_body_entered(body):

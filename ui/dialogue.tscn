@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx2gjw8hfok4d"]
+
+[ext_resource type="Script" uid="uid://3w30s1pe8ekr" path="res://dialogue.gd" id="1_fm7tp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm7tp"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.0246232, 0.0825584, 6.01634e-09, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fm7tp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 704.0
+offset_bottom = 192.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fm7tp")
+
+[node name="Text" type="RichTextLabel" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Greetings integer... "

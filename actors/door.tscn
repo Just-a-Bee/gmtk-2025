@@ -32,8 +32,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m35f"]
-size = Vector2(128, 128)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6m35f"]
+points = PackedVector2Array(32.5, -34.5, 32.5, 63.5, -31.5, 32.5, -31.5, -65.5)
 
 [node name="Door" type="StaticBody2D" groups=["door"]]
 script = ExtResource("1_6m35f")
@@ -43,4 +43,5 @@ sprite_frames = SubResource("SpriteFrames_cyjrd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-shape = SubResource("RectangleShape2D_6m35f")
+position = Vector2(-0.5, 0.5)
+shape = SubResource("ConvexPolygonShape2D_6m35f")

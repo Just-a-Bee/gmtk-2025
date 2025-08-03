@@ -18,8 +18,14 @@ func _ready():
 	get_tree().get_first_node_in_group("player").position = $PlayerSpawn.position
 	
 
-
-func enemy_died():
+var poof = preload("res://poof.tscn")
+func enemy_died(dier):
+	var new_particle = poof.instantiate()
+	new_particle.position = dier.position
+	add_child(new_particle)
+	new_particle.play("default")
+	
+	
 	get_tree().get_first_node_in_group("main").enemy_killed.emit()
 	var enemies_alive = false
 	for enemy in get_tree().get_nodes_in_group("enemy"):

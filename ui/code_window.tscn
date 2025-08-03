@@ -9,7 +9,7 @@ bg_color = Color(0.1, 0.1, 0.1, 1)
 [node name="CodeWindow" type="PanelContainer"]
 offset_left = 832.0
 offset_right = 1152.0
-offset_bottom = 448.0
+offset_bottom = 248.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7s738")
 script = ExtResource("1_7s738")
@@ -34,21 +34,20 @@ mouse_filter = 2
 
 [node name="Loop" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[color=GREEN]func loop():
-	test code
-	to see what it look
-	like
-	for int i in 5
-
-
-"
-fit_content = true
+	await 3
+	loop
+room1
+room2
+room3
+room4"
 autowrap_mode = 0
 tab_size = 2
 

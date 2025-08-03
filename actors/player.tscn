@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://g0xsloqsre7b"]
+[gd_scene load_steps=21 format=3 uid="uid://g0xsloqsre7b"]
 
 [ext_resource type="Script" uid="uid://7pqxc45dd131" path="res://actors/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="2_1yqc4"]
@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://cvn4s67we0mm5" path="res://assets/sword.png" id="3_kjkj0"]
 [ext_resource type="Texture2D" uid="uid://b088r2hotwuu3" path="res://assets/roll.png" id="4_esgq3"]
 [ext_resource type="Texture2D" uid="uid://d4fjjieo56smi" path="res://assets/slash.png" id="4_kjkj0"]
+
+[sub_resource type="Gradient" id="Gradient_tue77"]
+colors = PackedColorArray(0, 0, 0, 0.815686, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tue77"]
+gradient = SubResource("Gradient_tue77")
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.75, 1)
+metadata/_snap_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_33vod"]
 resource_local_to_scene = true
@@ -529,6 +540,12 @@ script = ExtResource("1_4flbx")
 [node name="PlayerOrigin" type="Node2D" parent="."]
 position = Vector2(0, 64)
 
+[node name="Shadow" type="Sprite2D" parent="PlayerOrigin"]
+modulate = Color(1, 1, 1, 0.490196)
+position = Vector2(2.86102e-06, 16)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_tue77")
+
 [node name="Sprite2D" type="Sprite2D" parent="PlayerOrigin"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_33vod")
@@ -595,6 +612,9 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
 position = Vector2(0, 48)
 shape = SubResource("CircleShape2D_kjkj0")
+
+[node name="InvTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

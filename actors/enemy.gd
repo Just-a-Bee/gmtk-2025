@@ -20,6 +20,6 @@ func _process(delta):
 	$Sprite2D.material.set_shader_parameter("flash", flash)
 
 func die():
-	get_parent().enemy_died()
+	get_parent().enemy_died(self)
 	get_parent().remove_child(self)
 	queue_free()
