@@ -46,7 +46,7 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 text = "[color=GREEN]void title():
-	await PassAnyKey;
+	await PressAnyKey;
 	loop();
 
 

@@ -17,7 +17,7 @@ var stack_count:int = 0
 var n:int = 1
 var loop_arr:Array[Block] = []
 var num_upgrades = 3
-var do_execute_loop := true
+var do_execute_loop := false
 
 func _ready():
 	#add_block(load(increase_n).new())
@@ -26,11 +26,9 @@ func _ready():
 	add_block(load(timeout).new())
 	add_block(load(loop_path).new())
 	update_text()
-	loop()
 	
 	%Player.interactible_entered.connect(show_interact_prompt)
 	%Player.interactible_left.connect(hide_interact_prompt)
-	
 
 func _input(event):
 	if event.is_pressed():
@@ -50,6 +48,8 @@ func loop():
 		current_block = 0
 		code_window.set_sprite_offset(0)
 		await get_tree().create_timer(Block.line_execute_time).timeout
+	if stack_count > 16:
+		lose()
 	if do_execute_loop:
 		loop()
 
@@ -124,3 +124,17 @@ func show_interact_prompt():
 
 func hide_interact_prompt():
 	%InteractAnimator.play("hide")
+
+
+
+func lose(player_died := false):
+	if player_died:
+		%ErrorMessage.show_death_message()
+	
+	do_execute_loop = false
+	get_tree().paused = true
+	$AnimationPlayer.play("show_error")
+
+
+func _on_player_die():
+	lose(true)

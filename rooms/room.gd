@@ -15,6 +15,7 @@ func _ready():
 		for dir in directions:
 			if $Floor.get_cell_source_id(tile+dir) == -1:  
 				$Floor.set_cell(tile+dir, 0, Vector2i(0,1))
+	get_tree().get_first_node_in_group("player").position = $PlayerSpawn.position
 	
 
 

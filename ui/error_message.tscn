@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci8pbcnklttff"]
+
+[ext_resource type="Script" uid="uid://deh3csd8c0mb3" path="res://ui/error_message.gd" id="1_05o8w"]
+[ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="1_cusoq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w48qg"]
+content_margin_bottom = 10.0
+bg_color = Color(0.952941, 0.94902, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vivmo"]
+content_margin_left = 10.0
+bg_color = Color(0.126611, 0, 0.930455, 1)
+
+[node name="ErrorMessage" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = -140.0
+offset_right = 244.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w48qg")
+script = ExtResource("1_05o8w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vivmo")
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "An Error has Ocurred"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_cusoq")
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "[color=BLUE][font_size=25]Stack Overflow
+
+[color=BLACK][font_size=20]An infinite loop repeated too many times. Please restart the program"
+fit_content = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"error_button"
+text = "Retry"
+
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_type_variation = &"error_button"
+text = "Quit"
+
+[connection signal="button_up" from="VBoxContainer/HBoxContainer2/Retry" to="." method="_on_retry_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit_button_up"]

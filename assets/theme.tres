@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c2v8ckhwblhdm"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c2v8ckhwblhdm"]
 
 [ext_resource type="FontFile" uid="uid://cbbrj2mqvhrv0" path="res://assets/Andale Mono.ttf" id="1_5x3i2"]
 
@@ -11,9 +11,31 @@ bg_color = Color(0.812359, 0, 0.113799, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lu33j"]
 bg_color = Color(0.103867, 0.343018, 0.0661829, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5x3i2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wycmq"]
+bg_color = Color(0.647244, 0.717667, 0.992701, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2pqw"]
+bg_color = Color(0.451155, 0.536859, 0.985964, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [resource]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_5x3i2")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_wl1kw")
 RichTextLabel/fonts/normal_font = ExtResource("1_5x3i2")
 UpgradePanel/base_type = &"PanelContainer"
 UpgradePanel/styles/panel = SubResource("StyleBoxFlat_lu33j")
+error_button/base_type = &"Button"
+error_button/font_sizes/font_size = 20
+error_button/styles/focus = SubResource("StyleBoxEmpty_5x3i2")
+error_button/styles/hover = SubResource("StyleBoxFlat_wycmq")
+error_button/styles/normal = SubResource("StyleBoxFlat_x2pqw")
+error_button/styles/pressed = null

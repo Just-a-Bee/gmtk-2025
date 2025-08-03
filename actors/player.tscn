@@ -128,7 +128,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [19]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -193,7 +193,7 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 resource_name = "attack"
-length = 0.6
+length = 0.3
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -226,7 +226,7 @@ tracks/2/path = NodePath(".:is_attacking")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -238,7 +238,7 @@ tracks/3/path = NodePath(".:max_speed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [50, 200, 300]
@@ -266,6 +266,42 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerOrigin/Sprite2D:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_1yqc4")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerOrigin/Sprite2D:hframes")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:run_frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kjkj0"]
@@ -387,7 +423,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1, 3]
+"values": [17, 19]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -428,6 +464,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_tue77"]
 resource_name = "run"
+length = 0.01
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -485,7 +522,7 @@ radius = 144.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 3
+collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_4flbx")
 

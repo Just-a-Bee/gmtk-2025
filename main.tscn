@@ -1,16 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://r6e4bl7fpfj"]
+[gd_scene load_steps=19 format=3 uid="uid://r6e4bl7fpfj"]
 
 [ext_resource type="Script" uid="uid://cvgdevao5lar5" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://g0xsloqsre7b" path="res://actors/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b64cl8aeweoxr" path="res://ui/code_window.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cei7kpgfyfchu" path="res://player_camera.gd" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://cyg5j0a7u218e" path="res://rooms/boss_room.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://yeoq2r8pinas" path="res://rooms/starting_room.tscn" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://brdj4i3iq7du5" path="res://ui/upgrade_menu.tscn" id="7_5vw27"]
 [ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://progress_bar.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://nt0h70yakdf5" path="res://assets/left_mouse.png" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://ci8pbcnklttff" path="res://ui/error_message.tscn" id="9_kek77"]
 
-[sub_resource type="Animation" id="Animation_5vw27"]
-resource_name = "show"
+[sub_resource type="Animation" id="Animation_dg77c"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,10 +19,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_efxa6"]
@@ -39,8 +40,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0.95), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_dg77c"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_5vw27"]
+resource_name = "show"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,10 +49,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
@@ -100,6 +101,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Greyout:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0901961, 0.0901961, 0.0901961, 0.858824)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_272bh"]
 resource_name = "hide_upgrades"
@@ -139,6 +164,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(64, 128), Vector2(64, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_ycdy4"]
+resource_name = "show_error"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Greyout:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.74558, 0.74558, 0.74558, 0.858824)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Greyout:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.9, 4.1),
+"transitions": PackedFloat32Array(1, 3.86374),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kek77"]
@@ -186,6 +252,7 @@ tracks/2/keys = {
 _data = {
 &"RESET": SubResource("Animation_4c57u"),
 &"hide_upgrades": SubResource("Animation_272bh"),
+&"show_error": SubResource("Animation_ycdy4"),
 &"show_upgrades": SubResource("Animation_kek77")
 }
 
@@ -209,13 +276,13 @@ y_sort_enabled = true
 
 [node name="Player" parent="SubViewportContainer/SubViewport/Node2D" instance=ExtResource("2_0xm2m")]
 unique_name_in_owner = true
-position = Vector2(88, 320)
+position = Vector2(912, 512)
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Node2D/Player"]
 zoom = Vector2(0.7, 0.7)
 script = ExtResource("3_7mycd")
 
-[node name="Room" parent="SubViewportContainer/SubViewport/Node2D" instance=ExtResource("4_272bh")]
+[node name="Room" parent="SubViewportContainer/SubViewport/Node2D" instance=ExtResource("4_kek77")]
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(832, 0)
@@ -301,3 +368,14 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_efxa6")
 }
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="ErrorMessage" parent="Node2D2" instance=ExtResource("9_kek77")]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(488, 280)
+
+[connection signal="die" from="SubViewportContainer/SubViewport/Node2D/Player" to="." method="_on_player_die"]

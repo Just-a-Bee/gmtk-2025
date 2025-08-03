@@ -4,6 +4,7 @@ class_name Player
 signal damage_taken
 signal interactible_entered
 signal interactible_left
+signal die
 
 var is_idle := true
 
@@ -119,8 +120,10 @@ func attack():
 	var attack_angle := get_angle_to(mouse_pos)
 	velocity = attack_dir*attack_velocity
 	%AttackHitbox.rotation = attack_angle
-	$AnimationPlayer.play("attack")
 	is_attacking = true
+	is_idle = false
+	$AnimationPlayer.play("attack")
+	
 
 func interact():
 	if interactible.has_method("interact"):
@@ -145,6 +148,8 @@ func take_damage(damage:int):
 	health -= damage + GameStats.all_damage
 	damage_taken.emit()
 	flash = 1
+	if health < 0:
+		die.emit()
 
 
 func _on_interact_range_body_entered(body):
