@@ -41,16 +41,23 @@ func _process(delta):
 	flash = max(flash - delta*3, 0)
 	%Sprite2D.material.set_shader_parameter("flash",flash)
 
+var step_dist := 90.0
+var current_step_dist := 0.0
+
 func _physics_process(delta):
 	if is_rolling:
 		velocity = velocity.normalized()*roll_speed
-		move_and_collide(velocity*delta)
+		move_and_slide()
 	else: # walking
 		var target_velocity = get_input_dir()*(max_speed + speed_increase)
 		velocity = velocity.move_toward(target_velocity, acceleration*delta)
 		# animaiton
 		if velocity.length() > 0:
 			run_frame += velocity.length()/400
+			current_step_dist += velocity.length()/100
+			if current_step_dist > step_dist:
+				current_step_dist -= step_dist
+				$Step.play() 
 			if run_frame > 27:
 				run_frame -= 27
 		move_and_slide()
@@ -105,6 +112,8 @@ func begin_roll():
 	var mouse_pos := get_global_mouse_position()
 	velocity = position.direction_to(mouse_pos)
 	$AnimationPlayer.play("roll")
+	await get_tree().create_timer(.2).timeout
+	$Roll.play()
 
 func can_attack()->bool:
 	if is_attacking or is_rolling:
@@ -123,6 +132,7 @@ func attack():
 	is_attacking = true
 	is_idle = false
 	$AnimationPlayer.play("attack")
+	$Attack.play()
 	
 
 func interact():

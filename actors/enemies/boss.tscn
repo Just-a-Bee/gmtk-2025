@@ -462,7 +462,6 @@ shape = SubResource("CircleShape2D_qkmvd")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="ForcefieldTimer" type="Timer" parent="."]
 wait_time = 5.0

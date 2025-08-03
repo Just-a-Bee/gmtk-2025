@@ -8,9 +8,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 19.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "You did it [color=MEDIUM_ORCHID]Integer[/color] you saved the program! Now the user's spreadsheet can finally load :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back to title" type="Button" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 504.0
+offset_right = 792.0
+offset_bottom = 600.0
+theme_type_variation = &"error_button"
 theme_override_font_sizes/font_size = 40
-text = "Congratualations!! You Win!!"
+text = "Return to title"

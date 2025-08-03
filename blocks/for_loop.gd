@@ -9,7 +9,12 @@ var repeats := 4
 func execute():
 	for i in repeats:
 		await make_timer(line_execute_time)
+		if not main.do_execute_loop:
+			return
 		main.code_window.increment_sprite_offset()
+		
+
+		
 		var block:Block = main.loop_arr[main.current_block + 1]
 		block.execute()
 		if not block.is_finished:

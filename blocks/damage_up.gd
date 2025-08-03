@@ -1,7 +1,7 @@
 extends Block
 
 func _init():
-	text = "player.damage += 3;\n"
+	text = "Player.damage += 3;\n"
 	tooltip = "Permanently increases your attack power by three"
 
 func execute():

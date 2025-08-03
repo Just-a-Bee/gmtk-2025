@@ -13,7 +13,7 @@ var long_cooldown = 3
 var forcefield_cooldown = 8
 
 func _ready():
-	health = 200
+	health = 300
 	get_tree().get_first_node_in_group("main").show_boss_bar(self)
 	for b in booleans:
 		b.hit.connect(self._on_boolean_hit)
@@ -76,3 +76,10 @@ func take_damage(n):
 	if is_forcefield_up:
 		return
 	super.take_damage(n)
+
+
+var active = false
+func activate(b):
+	if active == false and b is Player:
+		$AttackTimer.start(short_cooldown)
+		active = true

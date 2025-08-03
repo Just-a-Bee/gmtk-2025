@@ -2,7 +2,7 @@ extends Block
 
 
 func _init():
-	text = "await 3\n"
+	text = "await time(3);\n"
 	tooltip = "Waits three seconds"
 
 func execute():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://r6e4bl7fpfj"]
+[gd_scene load_steps=29 format=3 uid="uid://r6e4bl7fpfj"]
 
 [ext_resource type="Script" uid="uid://cvgdevao5lar5" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://g0xsloqsre7b" path="res://actors/player.tscn" id="2_0xm2m"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://nt0h70yakdf5" path="res://assets/left_mouse.png" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ci8pbcnklttff" path="res://ui/error_message.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://dx2gjw8hfok4d" path="res://ui/dialogue.tscn" id="10_4c57u"]
+[ext_resource type="AudioStream" uid="uid://ce1as41thx2vi" path="res://assets/lvl-normal.wav" id="11_dg77c"]
+[ext_resource type="AudioStream" uid="uid://bcdyiabw0gjrw" path="res://assets/boss-theme.wav" id="12_w48qg"]
+[ext_resource type="AudioStream" uid="uid://cu7tuesqykq8r" path="res://assets/lvl-chill.wav" id="12_ycdy4"]
 
 [sub_resource type="Animation" id="Animation_dg77c"]
 length = 0.001
@@ -365,6 +368,94 @@ _data = {
 &"show_upgrades": SubResource("Animation_kek77")
 }
 
+[sub_resource type="Animation" id="Animation_2cqfq"]
+resource_name = "chill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Passive:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Battle:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_yaehf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Passive:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Battle:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_074og"]
+resource_name = "battle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Passive:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Battle:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_074og"]
+_data = {
+&"RESET": SubResource("Animation_yaehf"),
+&"battle": SubResource("Animation_074og"),
+&"chill": SubResource("Animation_2cqfq")
+}
+
 [node name="Main" type="Control" groups=["main"]]
 layout_mode = 3
 anchors_preset = 0
@@ -494,5 +585,26 @@ offset_left = 224.0
 offset_top = 424.0
 offset_right = 224.0
 offset_bottom = 424.0
+
+[node name="Battle" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("11_dg77c")
+volume_db = -80.0
+autoplay = true
+
+[node name="Boss" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("12_w48qg")
+volume_db = -12.0
+
+[node name="Passive" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("12_ycdy4")
+autoplay = true
+
+[node name="MusicAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_074og")
+}
 
 [connection signal="die" from="SubViewportContainer/SubViewport/Node2D/Player" to="." method="_on_player_die"]

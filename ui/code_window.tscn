@@ -9,7 +9,7 @@ bg_color = Color(0.1, 0.1, 0.1, 1)
 [node name="CodeWindow" type="PanelContainer"]
 offset_left = 832.0
 offset_right = 1152.0
-offset_bottom = 248.0
+offset_bottom = 232.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7s738")
 script = ExtResource("1_7s738")
@@ -72,9 +72,7 @@ text = "0/16"
 
 [node name="PausePanel" type="PanelContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(0, 384)
 layout_mode = 2
-size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PausePanel"]

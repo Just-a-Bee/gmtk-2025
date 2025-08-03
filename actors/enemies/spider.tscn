@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqovoupmlsoif"]
+[gd_scene load_steps=19 format=3 uid="uid://bqovoupmlsoif"]
 
 [ext_resource type="Script" uid="uid://dvwh1ofkqkpt" path="res://actors/spider.gd" id="1_hwe5d"]
 [ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://actors/hitflash.gdshader" id="2_5gt53"]
 [ext_resource type="Texture2D" uid="uid://6g8ks0tr6p7a" path="res://assets/spider-walk-sheet.png" id="2_vcyao"]
-[ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="3_5gt53"]
+[ext_resource type="Texture2D" uid="uid://b14jd4q8307mo" path="res://assets/bug_slash.png" id="4_48i75"]
 [ext_resource type="Texture2D" uid="uid://dttcwqx8xu6c3" path="res://assets/spider-attack-sheet.png" id="4_vcyao"]
 
 [sub_resource type="Gradient" id="Gradient_48i75"]
@@ -28,6 +28,35 @@ radius = 32.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8yred"]
 radius = 32.0
 height = 144.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohlwi"]
+atlas = ExtResource("4_48i75")
+region = Rect2(0, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghr1w"]
+atlas = ExtResource("4_48i75")
+region = Rect2(250, 0, 250, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hi2l"]
+atlas = ExtResource("4_48i75")
+region = Rect2(500, 0, 250, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iuxyi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohlwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghr1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hi2l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_34jws"]
 radius = 40.0
@@ -95,6 +124,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackArea/Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_c6xed"]
 resource_name = "attack"
@@ -160,6 +201,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0, 39.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackArea/Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.9, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yred"]
 _data = {
@@ -209,11 +262,11 @@ collision_layer = 0
 collision_mask = 4
 monitoring = false
 
-[node name="Sprite2D" type="Sprite2D" parent="AttackArea"]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="AttackArea"]
 visible = false
 position = Vector2(88, 0)
 scale = Vector2(0.625, 1)
-texture = ExtResource("3_5gt53")
+sprite_frames = SubResource("SpriteFrames_iuxyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(88, 0)

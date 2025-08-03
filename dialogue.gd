@@ -2,17 +2,18 @@ extends Control
 
 
 var dialogue_array := [
-	"Greetings integer...",
+	"Greetings [color=MEDIUM_ORCHID]Integer[/color]...",
 	"I've called upon you because [color=YELLOW]The Program[/color] is in grave danger.",
-	"You're our only hope for stopping Boolean and its evil scheme.",
-	"It has called a recursive function, causing an infinite loop.",
-	'During this loop it is trying to upload itself to "the net" in an attempt to stay True forver',
-	"You must stop it integer, before it's too late and the program crashes.",
+	"You're our only hope for stopping [color=RED]Boolean[/color] and its evil scheme.",
+	"It has invoked a recursive function, causing an infinite loop.",
+	'During this loop it is trying to upload itself to "the net" in an attempt to remain [color=RED]True[/color] forver',
+	"You must stop it, [color=MEDIUM_ORCHID]Integer[/color], before it's too late and [color=YELLOW]The Program[/color] crashes.",
 	"On the right side of the screen you can see the code in the loop() function.",
 	"Below that is the remaining memory. If that runs out it's all over.",
 	"Throughout your journey you will encounter lines of code that you can add to this function to aid you.",
 	"Use them wisely.",
-	"Good luck Integer"
+	"Good luck [color=MEDIUM_ORCHID]Integer[/color]",
+	"We're [color=MEDIUM_ORCHID]counting[/color] on you."
 ]
 
 @export var active:bool = false

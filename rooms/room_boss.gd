@@ -3,6 +3,9 @@ extends Room
 
 func _ready():
 	item_packed = preload("res://actors/code_deleter.tscn")
+	
+	get_tree().get_first_node_in_group("main").change_music_to_boss()
+	
 	super._ready()
 
 func enemy_died(enemy):

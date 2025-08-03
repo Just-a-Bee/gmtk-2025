@@ -3,12 +3,10 @@ class_name Main
 
 signal enemy_killed
 signal key_pressed
+signal resume_execution
 
 var timeout := "res://blocks/timeout.gd"
-var powerup := "res://blocks/damage_random.gd"
-var increase_n := "res://blocks/damage_all.gd"
 var loop_path := "res://blocks/loop.gd"
-var for_loop_path := "res://blocks/for_loop.gd"
 
 @onready var player:Player = %Player
 @onready var code_window:CodeWindow = %CodeWindow
@@ -20,9 +18,6 @@ var num_upgrades = 3
 var do_execute_loop := false
 
 func _ready():
-	#add_block(load(increase_n).new())
-	#add_block(load("res://blocks/for_loop.gd").new())
-	#add_block(load(powerup).new())
 	add_block(load(timeout).new())
 	add_block(load(loop_path).new())
 	update_text()
@@ -91,9 +86,11 @@ func select_upgrade(index, object, insert_index):
 func room_cleared():
 	do_execute_loop = false
 	code_window.pause()
+	$MusicAnimator.play("chill")
 
 func next_room():
 	# play some sort of fade out animation
+	
 	var room = get_tree().get_first_node_in_group("room")
 	room.get_parent().remove_child(room)
 	room.queue_free()
@@ -102,8 +99,10 @@ func next_room():
 	$SubViewportContainer/SubViewport/Node2D.add_child(new_room)
 	player.position = new_room.get_node("PlayerSpawn").position
 	do_execute_loop = true
+	resume_execution.emit()
 	code_window.unpause()
 	loop()
+	$MusicAnimator.play("battle")
 	
 	# play a fade in
 
@@ -147,10 +146,16 @@ func show_deleter():
 
 func play_dialogue():
 	get_tree().paused = true
+	$Dialogue.show_next_line()
 	$AnimationPlayer.play("show_dialogue")
-
+	
 
 func end_dialogue():
 	$AnimationPlayer.play("hide_dialogue")
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
+
+func change_music_to_boss():
+	$Battle.stop()
+	$Boss.play()
+	$Passive.stop()

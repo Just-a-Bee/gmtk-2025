@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK 2025"
-run/main_scene="uid://r6e4bl7fpfj"
+run/main_scene="uid://ctypuq5ni0g62"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://assets/icon.svg"
 Upgrades="*res://upgrades.gd"
 GameStats="*res://game_stats.gd"
 Rooms="*res://rooms.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 
@@ -98,3 +102,4 @@ attack={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.0402666, 0.191925, 2.40654e-08, 1)

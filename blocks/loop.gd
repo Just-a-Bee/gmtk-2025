@@ -1,7 +1,7 @@
 extends Block
 
 func _init():
-	text = "loop()\n"
+	text = "loop();\n"
 
 func execute():
 	main.increment_stack_count()
