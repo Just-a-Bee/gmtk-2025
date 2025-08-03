@@ -8,6 +8,20 @@ var room_array = [
 
 var boss_path = "res://rooms/room_boss.tscn"
 
+var room_queue = []
+
+func _ready():
+	reset_room_queue()
+	print(room_queue)
+
+var num_rooms = 3
+
+func reset_room_queue():
+	room_queue = []
+	room_array.shuffle()
+	room_queue.push_back(room_array.slice(0, num_rooms))
+	room_queue.push_back(boss_path)
+
+
 func get_next_room():
-	var index = randi_range(0, room_array.size()-1)
-	return room_array.pop_at(index)
+	return room_queue.pop_front()

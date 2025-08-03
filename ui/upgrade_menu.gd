@@ -26,13 +26,23 @@ var selected_upgrade:Block = null
 
 func update_code_window_text():
 	var text = "void loop():\n"
-	for i in insert_index:
-		text += "\t" + main.loop_arr[i].text
-	text += "[color=GREEN]+\t" + selected_upgrade.text + "[/color]"
-	for i in main.loop_arr.size()-insert_index:
-		text += "\t" + main.loop_arr[i+insert_index].text
+	if not is_deleting:
+		for i in insert_index:
+			text += "\t" + main.loop_arr[i].text
+		text += "[color=GREEN]+\t" + selected_upgrade.text + "[/color]"
+		for i in main.loop_arr.size()-insert_index:
+			text += "\t" + main.loop_arr[i+insert_index].text
+		
+	else:
+		for i in insert_index:
+			text += "\t" + main.loop_arr[i].text
+		text += "[color=RED]-\t" + main.loop_arr[insert_index].text + "[/color]"
+		for i in main.loop_arr.size()-insert_index-1:
+			text += "\t" + main.loop_arr[i+insert_index+1].text
+		
+		
+		
 	%CodeEditText.text = text
-
 func _input(event):
 	if not is_inserting_code:
 		return
@@ -46,5 +56,24 @@ func _input(event):
 		insert_code()
 
 func insert_code():
+	if is_deleting:
+		if insert_index == main.loop_arr.size()-1:
+			get_tree().change_scene_to_file("res://win.tscn")
+		else:
+			main.lose(false, true)
+		return
+	
+	
+	
 	get_parent().select_upgrade(selected_index, selected_upgrade, insert_index)
 	is_inserting_code = false
+
+
+var is_deleting = false
+
+func show_deleter():
+	is_deleting = true
+	options.hide()
+	$CodeEditorWindow.show()
+	is_inserting_code = true
+	update_code_window_text()

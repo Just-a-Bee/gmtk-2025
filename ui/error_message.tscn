@@ -53,9 +53,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
-text = "[color=BLUE][font_size=25]Stack Overflow
+text = "[color=BLUE][font_size=25]Why Did You Do That
 
-[color=BLACK][font_size=20]An infinite loop repeated too many times. Please restart the program"
+[color=BLACK][font_size=20]That was your chance to save the program and you blew it!! Please DON'T restart the program."
 fit_content = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]

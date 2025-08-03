@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/door.tscn" id="4_i11yn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
-vertices = PackedVector2Array(1243.53, 1023.06, 379.531, 1455.06, 336, 1476.82, 292.469, 1455.06, -793.648, 912, 628.469, 200.938, 672, 179.172, 798, 362, 955.531, 320.938, 1801.65, 744, 1435.53, 927.063, 1382, 953.82, 946, 362, 946, 316.172, 1382, 966.18, 1435.53, 992.938, 1513.65, 1032, 1483.53, 1047.06, 1440, 1068.82, 1396.47, 1047.06, 1348.47, 1023.06, 1296, 996.82, 715.531, 200.938, 763.531, 224.938, 798, 242.172, 672, -35.1797, 619.531, -8.9375, -772.469, 687.063, -816, 708.82, -841.648, 696, 628.469, -39.0625, 672, -60.8203, 715.531, -39.0625, 1849.65, 528, 1824, 540.82, 1780.47, 519.063, 724.469, -8.9375)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18, 19, 20, 21), PackedInt32Array(11, 14, 21, 12), PackedInt32Array(12, 21, 0, 7), PackedInt32Array(7, 6, 22), PackedInt32Array(7, 22, 23), PackedInt32Array(7, 23, 24), PackedInt32Array(25, 26, 27, 28, 29, 30, 31), PackedInt32Array(32, 33, 34, 35, 36, 25, 31)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_we827"]
 vertices = PackedVector2Array(32, 0, 0, 16, -32, 0, 0, -16)
@@ -77,6 +75,7 @@ texture_region_size = Vector2i(64, 66)
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 0, -32, 32, 0, 48, 32, 32, 32, 0, 0, 16)
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, -16)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, 16, 32, 0, 0, -16)
 0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -16, -32, 0, 0, 16, 32, 0)
 
 [sub_resource type="TileSet" id="TileSet_272bh"]
@@ -113,7 +112,9 @@ x_draw_order_reversed = true
 position = Vector2(664, 416)
 
 [node name="Door" parent="." instance=ExtResource("4_i11yn")]
-position = Vector2(872, 288)
+z_index = 1
+position = Vector2(1152, 340)
+scale = Vector2(1.5, 1.5)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(1424, 1024)

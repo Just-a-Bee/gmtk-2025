@@ -127,8 +127,10 @@ func hide_interact_prompt():
 
 
 
-func lose(player_died := false):
-	if player_died:
+func lose(player_died := false, wrong_delete := false):
+	if wrong_delete:
+		%ErrorMessage.show_wrong_delete()
+	elif player_died:
 		%ErrorMessage.show_death_message()
 	
 	do_execute_loop = false
@@ -138,3 +140,8 @@ func lose(player_died := false):
 
 func _on_player_die():
 	lose(true)
+
+func show_deleter():
+	get_tree().paused = true
+	$UpgradeMenu.show_deleter()
+	$AnimationPlayer.play("show_upgrades")

@@ -169,7 +169,8 @@ x_draw_order_reversed = true
 position = Vector2(760, 512)
 
 [node name="Door" parent="." instance=ExtResource("3_pgmiq")]
-position = Vector2(568, 360)
+position = Vector2(527, 363)
+scale = Vector2(-1.5, 1.5)
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(1192, 792)

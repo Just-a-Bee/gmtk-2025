@@ -6,11 +6,18 @@ var projectile_packed := preload("res://actors/slug_bullet.tscn")
 const BULLET_DIST = 50
 var is_forcefield_up = true
 
+var attack_number = 5
+var current_attack_number = 0
+var short_cooldown = 1
+var long_cooldown = 3
+var forcefield_cooldown = 8
+
 func _ready():
-	health = 300
+	health = 200
 	get_tree().get_first_node_in_group("main").show_boss_bar(self)
 	for b in booleans:
 		b.hit.connect(self._on_boolean_hit)
+	$Sprite2D.play("default")
 
 func _physics_process(delta):
 	pass
@@ -27,6 +34,12 @@ func circle_attack():
 		bullet.position = position + bullet_offset
 		bullet.direction = bullet_offset.normalized()
 		get_parent().add_child(bullet)
+	current_attack_number += 1
+	if current_attack_number == attack_number:
+		current_attack_number = 0
+		$AttackTimer.start(long_cooldown)
+	else:
+		$AttackTimer.start(short_cooldown)
 
 
 func raise_forcefield():
@@ -41,6 +54,7 @@ func lower_forcefield():
 	collision_layer = 6
 	$ForcefieldTimer.start()
 	is_forcefield_up = false
+	$AttackTimer.start(forcefield_cooldown)
 
 
 func _on_attack_timer_timeout():
