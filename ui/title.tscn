@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctypuq5ni0g62"]
+
+[ext_resource type="Script" uid="uid://ojrc48bi30a" path="res://title.gd" id="1_co4ec"]
+[ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="2_8lx1x"]
+[ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="3_k1m56"]
+[ext_resource type="Texture2D" uid="uid://cvn4s67we0mm5" path="res://assets/sword.png" id="4_wsk5t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_co4ec"]
+bg_color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_co4ec")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 320.0
+offset_right = 768.0
+offset_bottom = 576.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_co4ec")
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Loop" type="RichTextLabel" parent="PanelContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[color=GREEN]void title():
+	await PassAnyKey;
+	loop();
+
+
+"
+fit_content = true
+tab_size = 2
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(576, 156)
+scale = Vector2(4, 1.9375)
+texture = ExtResource("2_8lx1x")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(168, 368)
+texture = ExtResource("3_k1m56")
+hframes = 28
+vframes = 3
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(288, 376)
+rotation = 0.523599
+texture = ExtResource("4_wsk5t")

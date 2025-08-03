@@ -1,10 +1,14 @@
 extends Control
 class_name Main
 
+signal enemy_killed
+signal key_pressed
+
 var timeout := "res://blocks/timeout.gd"
-var powerup := "res://blocks/damage_up.gd"
-var increase_n := "res://blocks/increase_n.gd"
+var powerup := "res://blocks/damage_random.gd"
+var increase_n := "res://blocks/damage_all.gd"
 var loop_path := "res://blocks/loop.gd"
+var for_loop_path := "res://blocks/for_loop.gd"
 
 @onready var player:Player = %Player
 @onready var code_window:CodeWindow = %CodeWindow
@@ -16,12 +20,21 @@ var num_upgrades = 3
 var do_execute_loop := true
 
 func _ready():
-	add_block(load(increase_n).new())
-	add_block(load(powerup).new())
+	#add_block(load(increase_n).new())
+	#add_block(load("res://blocks/for_loop.gd").new())
+	#add_block(load(powerup).new())
 	add_block(load(timeout).new())
 	add_block(load(loop_path).new())
 	update_text()
 	loop()
+	
+	%Player.interactible_entered.connect(show_interact_prompt)
+	%Player.interactible_left.connect(hide_interact_prompt)
+	
+
+func _input(event):
+	if event.is_pressed():
+		key_pressed.emit()
 
 var current_block := 0
 
@@ -105,3 +118,9 @@ func show_boss_bar(b:Enemy):
 func _on_boss_hit():
 	$BossBar.value = boss.health
 	
+
+func show_interact_prompt():
+	%InteractAnimator.play("show")
+
+func hide_interact_prompt():
+	%InteractAnimator.play("hide")

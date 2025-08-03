@@ -2,12 +2,14 @@ extends CharacterBody2D
 class_name Player
 
 signal damage_taken
+signal interactible_entered
+signal interactible_left
 
 var is_idle := true
 
 var max_health := 100
 var health := 100
-
+var flash := 0.0
 var damage = 10
 @export var max_speed = 300
 var speed_increase = 0
@@ -33,6 +35,10 @@ func _input(event):
 
 func _ready():
 	$AnimationPlayer.play("idle")
+
+func _process(delta):
+	flash = max(flash - delta*3, 0)
+	%Sprite2D.material.set_shader_parameter("flash",flash)
 
 func _physics_process(delta):
 	if is_rolling:
@@ -138,10 +144,13 @@ func _on_idle_timer_timeout():
 func take_damage(damage:int):
 	health -= damage + GameStats.all_damage
 	damage_taken.emit()
+	flash = 1
 
 
 func _on_interact_range_body_entered(body):
 	interactible = body
+	interactible_entered.emit()
 
 func _on_interact_range_body_exited(_body):
 	interactible = null
+	interactible_left.emit()

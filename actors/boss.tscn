@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfhf4eijstbph"]
+[gd_scene load_steps=6 format=3 uid="uid://cfhf4eijstbph"]
 
 [ext_resource type="Script" uid="uid://dqx8d6qlyyi8y" path="res://boss.gd" id="1_ttay5"]
 [ext_resource type="Texture2D" uid="uid://6b7a4kvhblgd" path="res://assets/icon.svg" id="2_0p0qu"]
+[ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://actors/hitflash.gdshader" id="3_0p0qu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmvd"]
+resource_local_to_scene = true
+shader = ExtResource("3_0p0qu")
+shader_parameter/flash = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkmvd"]
 radius = 64.0
@@ -17,7 +23,8 @@ position = Vector2(4.76837e-07, 0)
 scale = Vector2(1.3125, 1.375)
 texture = ExtResource("2_0p0qu")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qkmvd")
 texture = ExtResource("2_0p0qu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

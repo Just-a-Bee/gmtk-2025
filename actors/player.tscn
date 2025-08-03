@@ -1,10 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://g0xsloqsre7b"]
+[gd_scene load_steps=19 format=3 uid="uid://g0xsloqsre7b"]
 
 [ext_resource type="Script" uid="uid://7pqxc45dd131" path="res://actors/player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="2_1yqc4"]
+[ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://actors/hitflash.gdshader" id="2_tue77"]
 [ext_resource type="Texture2D" uid="uid://cvn4s67we0mm5" path="res://assets/sword.png" id="3_kjkj0"]
 [ext_resource type="Texture2D" uid="uid://b088r2hotwuu3" path="res://assets/roll.png" id="4_esgq3"]
 [ext_resource type="Texture2D" uid="uid://d4fjjieo56smi" path="res://assets/slash.png" id="4_kjkj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33vod"]
+resource_local_to_scene = true
+shader = ExtResource("2_tue77")
+shader_parameter/flash = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 80.0
@@ -488,6 +494,7 @@ position = Vector2(0, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerOrigin"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_33vod")
 position = Vector2(0, -64)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_1yqc4")

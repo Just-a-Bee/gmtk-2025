@@ -2,13 +2,16 @@ extends Node
 # TODO: add rarity to choices
 var common_array:Array[String] = [
 	"res://blocks/timeout.gd",
-	"res://blocks/damage_up.gd",
+	"res://blocks/speedup.gd",
+	"res://blocks/heal.gd",
+	"res://blocks/await_any_key_pressed.gd"
 ]
 
 var uncommon_array:Array[String] = [
+	"res://blocks/damage_up.gd",
 	"res://blocks/all_damage_up.gd",
-	"res://blocks/increase_n.gd",
-	"res://blocks/heal.gd",
+	"res://blocks/attack_size_up.gd",
+	"res://blocks/await_enemy_killed.gd"
 ]
 
 var rare_array:Array[String] = [
@@ -29,7 +32,6 @@ class upgrade_option:
 
 func pick_upgrade():
 	var roll := randf()
-	print(roll)
 	var choice = upgrade_option.new()
 	if roll > rare_chance:
 		choice.rarity = 2
@@ -40,7 +42,6 @@ func pick_upgrade():
 	
 	choice.index = randi_range(0, upgrade_array[choice.rarity].size()-1)
 	choice.upgrade = upgrade_array[choice.rarity][choice.index]
-	print(choice.upgrade)
 	return choice
 
 func remove_from_array(choice:upgrade_option):

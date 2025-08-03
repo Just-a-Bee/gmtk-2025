@@ -44,10 +44,12 @@ text = "[color=GREEN]func loop():
 	test code
 	to see what it look
 	like
+	for int i in 5
 
 
 "
 fit_content = true
+autowrap_mode = 0
 tab_size = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]

@@ -1,10 +1,10 @@
 extends Block
 
 func _init():
-	text = "for (int i = 0; i < 5; i++)\n\t"
+	text = "for int i in 5:\n\t"
 	tooltip = "Repeats the next line five times"
 
-var repeats := 3
+var repeats := 4
 
 func execute():
 	for i in repeats:

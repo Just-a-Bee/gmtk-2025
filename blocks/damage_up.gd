@@ -7,6 +7,7 @@ func _init():
 func execute():
 	await make_timer(line_execute_time)
 	main.player.damage += 1
+	print(main.player.damage)
 	
 	is_finished = true
 	finished.emit()

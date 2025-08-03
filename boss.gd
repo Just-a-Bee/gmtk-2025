@@ -3,7 +3,7 @@ extends Enemy
 
 @export var booleans:Array[Enemy] = []
 var projectile_packed := preload("res://actors/slug_bullet.tscn")
-var BULLET_DIST = 50
+const BULLET_DIST = 50
 var is_forcefield_up = true
 
 func _ready():
@@ -57,3 +57,8 @@ func _on_boolean_hit():
 
 func _on_forcefield_timer_timeout():
 	raise_forcefield()
+
+func take_damage(n):
+	if is_forcefield_up:
+		return
+	super.take_damage(n)
