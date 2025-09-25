@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://d2rsw56qiyex4" path="res://win.gd" id="1_hgi8f"]
 [ext_resource type="PackedScene" uid="uid://bkbmrblvovusn" path="res://npc.tscn" id="2_tmki8"]
 
+[sub_resource type="Animation" id="Animation_tmki8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_hgi8f"]
 resource_name = "default"
 length = 20.0
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "values": [0, 20, 20, 45, 45, 91, 91, 120, 120, 123, 123, 145, 148, 148, 300]
 }
 
-[sub_resource type="Animation" id="Animation_tmki8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:visible_characters")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yblwc"]
 _data = {
 &"RESET": SubResource("Animation_tmki8"),
@@ -41,6 +41,7 @@ _data = {
 }
 
 [node name="Win" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

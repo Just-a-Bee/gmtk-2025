@@ -13,7 +13,10 @@ func execute():
 			return
 		main.code_window.increment_sprite_offset()
 		
-
+		
+		
+		if main.loop_arr[main.current_block] != self:
+			return
 		
 		var block:Block = main.loop_arr[main.current_block + 1]
 		block.execute()

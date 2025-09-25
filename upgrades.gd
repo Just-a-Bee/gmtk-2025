@@ -21,8 +21,9 @@ func _ready():
 	reset_upgrade_queue()
 
 func reset_upgrade_queue():
-	upgrade_queue = upgrade_array
+	upgrade_queue = upgrade_array.duplicate()
 	upgrade_queue.shuffle()
+	print(upgrade_queue)	
 
 
 class upgrade_option:
