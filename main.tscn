@@ -1,12 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://r6e4bl7fpfj"]
+[gd_scene format=3 uid="uid://r6e4bl7fpfj"]
 
 [ext_resource type="Script" uid="uid://cvgdevao5lar5" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://g0xsloqsre7b" path="res://actors/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://g0xsloqsre7b" path="res://actors/player/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://b64cl8aeweoxr" path="res://ui/code_window.tscn" id="3_1bvp3"]
-[ext_resource type="Script" uid="uid://cei7kpgfyfchu" path="res://player_camera.gd" id="3_7mycd"]
+[ext_resource type="Script" uid="uid://cei7kpgfyfchu" path="res://actors/player/player_camera.gd" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://yeoq2r8pinas" path="res://rooms/starting_room.tscn" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://brdj4i3iq7du5" path="res://ui/upgrade_menu.tscn" id="7_5vw27"]
-[ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://progress_bar.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://ui/health_bar.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://nt0h70yakdf5" path="res://assets/left_mouse.png" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ci8pbcnklttff" path="res://ui/error_message.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://dx2gjw8hfok4d" path="res://ui/dialogue.tscn" id="10_4c57u"]
@@ -456,43 +456,43 @@ _data = {
 &"chill": SubResource("Animation_2cqfq")
 }
 
-[node name="Main" type="Control" groups=["main"]]
+[node name="Main" type="Control" unique_id=1105647639 groups=["main"]]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ig7tw")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1394317635]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1680136191]
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport"]
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=165426942]
 y_sort_enabled = true
 
-[node name="Player" parent="SubViewportContainer/SubViewport/Node2D" instance=ExtResource("2_0xm2m")]
+[node name="Player" parent="SubViewportContainer/SubViewport/Node2D" unique_id=201315513 instance=ExtResource("2_0xm2m")]
 unique_name_in_owner = true
 position = Vector2(912, 512)
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Node2D/Player"]
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Node2D/Player" unique_id=653401122]
 zoom = Vector2(0.7, 0.7)
 script = ExtResource("3_7mycd")
 
-[node name="Room" parent="SubViewportContainer/SubViewport/Node2D" instance=ExtResource("4_kek77")]
+[node name="Room" parent="SubViewportContainer/SubViewport/Node2D" unique_id=2082080220 instance=ExtResource("4_kek77")]
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1406310558]
 position = Vector2(832, 400)
 
-[node name="CodeWindow" parent="Node2D" instance=ExtResource("3_1bvp3")]
+[node name="CodeWindow" parent="Node2D" unique_id=961134378 instance=ExtResource("3_1bvp3")]
 unique_name_in_owner = true
 offset_left = -8.0
 offset_right = 320.0
 
-[node name="InteractPrompt" type="HBoxContainer" parent="."]
+[node name="InteractPrompt" type="HBoxContainer" parent="." unique_id=1585812873]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 440.0
@@ -501,22 +501,20 @@ offset_right = 691.0
 offset_bottom = 636.0
 theme_override_constants/separation = -7
 
-[node name="TextureRect" type="TextureRect" parent="InteractPrompt"]
+[node name="TextureRect" type="TextureRect" parent="InteractPrompt" unique_id=816697484]
 layout_mode = 2
 texture = ExtResource("8_5vw27")
 
-[node name="Label" type="Label" parent="InteractPrompt"]
+[node name="Label" type="Label" parent="InteractPrompt" unique_id=633109176]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = ":Interact"
 
-[node name="InteractAnimator" type="AnimationPlayer" parent="InteractPrompt"]
+[node name="InteractAnimator" type="AnimationPlayer" parent="InteractPrompt" unique_id=804146341]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_ycdy4")
-}
+libraries/ = SubResource("AnimationLibrary_ycdy4")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=286505636]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -527,7 +525,7 @@ value = 50.0
 show_percentage = false
 script = ExtResource("7_272bh")
 
-[node name="BossBar" type="ProgressBar" parent="."]
+[node name="BossBar" type="ProgressBar" parent="." unique_id=787064507]
 visible = false
 layout_mode = 0
 offset_left = 128.0
@@ -539,7 +537,7 @@ max_value = 300.0
 value = 50.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="BossBar"]
+[node name="Label" type="Label" parent="BossBar" unique_id=1939056399]
 layout_mode = 0
 offset_top = -32.0
 offset_right = 126.0
@@ -547,7 +545,7 @@ offset_bottom = 3.0
 theme_override_font_sizes/font_size = 30
 text = "Boolean"
 
-[node name="Greyout" type="ColorRect" parent="."]
+[node name="Greyout" type="ColorRect" parent="." unique_id=1428284086]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1152.0
@@ -555,7 +553,7 @@ offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0.0901961, 0.0901961, 0.0901961, 0.858824)
 
-[node name="UpgradeMenu" parent="." instance=ExtResource("7_5vw27")]
+[node name="UpgradeMenu" parent="." unique_id=1563301965 instance=ExtResource("7_5vw27")]
 layout_mode = 0
 offset_left = 64.0
 offset_top = -512.0
@@ -563,22 +561,20 @@ offset_right = 1088.0
 offset_bottom = -10.0
 mouse_filter = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1425372401]
 process_mode = 3
-libraries = {
-&"": SubResource("AnimationLibrary_efxa6")
-}
+libraries/ = SubResource("AnimationLibrary_efxa6")
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Node2D2" type="Node2D" parent="." unique_id=1318317822]
 position = Vector2(576, 324)
 scale = Vector2(1e-05, 1e-05)
 
-[node name="ErrorMessage" parent="Node2D2" instance=ExtResource("9_kek77")]
+[node name="ErrorMessage" parent="Node2D2" unique_id=264698328 instance=ExtResource("9_kek77")]
 unique_name_in_owner = true
 process_mode = 3
 custom_minimum_size = Vector2(488, 280)
 
-[node name="Dialogue" parent="." instance=ExtResource("10_4c57u")]
+[node name="Dialogue" parent="." unique_id=1936753174 instance=ExtResource("10_4c57u")]
 visible = false
 layout_mode = 1
 offset_left = 224.0
@@ -586,26 +582,24 @@ offset_top = 424.0
 offset_right = 224.0
 offset_bottom = 424.0
 
-[node name="Battle" type="AudioStreamPlayer" parent="."]
+[node name="Battle" type="AudioStreamPlayer" parent="." unique_id=1243056112]
 process_mode = 3
 stream = ExtResource("11_dg77c")
 volume_db = -80.0
 autoplay = true
 
-[node name="Boss" type="AudioStreamPlayer" parent="."]
+[node name="Boss" type="AudioStreamPlayer" parent="." unique_id=670214650]
 process_mode = 3
 stream = ExtResource("12_w48qg")
 volume_db = -12.0
 
-[node name="Passive" type="AudioStreamPlayer" parent="."]
+[node name="Passive" type="AudioStreamPlayer" parent="." unique_id=244595018]
 process_mode = 3
 stream = ExtResource("12_ycdy4")
 autoplay = true
 
-[node name="MusicAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_074og")
-}
+[node name="MusicAnimator" type="AnimationPlayer" parent="." unique_id=1787280616]
+libraries/ = SubResource("AnimationLibrary_074og")
 
 [connection signal="die" from="SubViewportContainer/SubViewport/Node2D/Player" to="." method="_on_player_die"]
 [connection signal="finished" from="Battle" to="." method="_on_battle_finished"]

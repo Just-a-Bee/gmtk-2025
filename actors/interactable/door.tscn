@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bt55xjl53dp8g"]
+
+[ext_resource type="Script" uid="uid://cr3xtxl4yf8ok" path="res://actors/interactable/door.gd" id="1_6m35f"]
+[ext_resource type="Texture2D" uid="uid://x8v7tgu2mu3q" path="res://assets/door.png" id="2_6m35f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m35f"]
+atlas = ExtResource("2_6m35f")
+region = Rect2(0, 0, 64, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gca3u"]
+atlas = ExtResource("2_6m35f")
+region = Rect2(64, 0, 64, 130)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o1u7"]
+atlas = ExtResource("2_6m35f")
+region = Rect2(128, 0, 64, 130)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cyjrd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m35f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gca3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o1u7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_6m35f"]
+points = PackedVector2Array(32.5, -34.5, 32.5, 63.5, -31.5, 32.5, -31.5, -65.5)
+
+[node name="Door" type="StaticBody2D" groups=["door"]]
+script = ExtResource("1_6m35f")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cyjrd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-0.5, 0.5)
+shape = SubResource("ConvexPolygonShape2D_6m35f")

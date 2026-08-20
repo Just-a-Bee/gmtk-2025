@@ -58,7 +58,7 @@ func _input(event):
 func insert_code():
 	if is_deleting:
 		if insert_index == main.loop_arr.size()-1:
-			get_tree().change_scene_to_file("res://win.tscn")
+			get_tree().change_scene_to_file("res://ui/win.tscn")
 		else:
 			main.lose(false, true)
 		return

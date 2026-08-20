@@ -1,7 +1,7 @@
 extends NavigationRegion2D
 class_name Room
 
-var item_packed:PackedScene = preload("res://actors/code_pickup.tscn")
+var item_packed:PackedScene = preload("res://actors/interactable/items/code_pickup.tscn")
 
 func _ready():
 	var directions = [
@@ -18,7 +18,7 @@ func _ready():
 	get_tree().get_first_node_in_group("player").position = $PlayerSpawn.position
 	
 
-var poof = preload("res://poof.tscn")
+var poof = preload("res://fx/poof.tscn")
 func enemy_died(dier):
 	var new_particle = poof.instantiate()
 	new_particle.position = dier.position

@@ -1,9 +1,9 @@
-[gd_scene load_steps=90 format=3 uid="uid://b5baa1ukmbcql"]
+[gd_scene format=3 uid="uid://b5baa1ukmbcql"]
 
-[ext_resource type="Script" uid="uid://8vbv1hxx4wk1" path="res://actors/slug.gd" id="1_dv6ca"]
+[ext_resource type="Script" uid="uid://8vbv1hxx4wk1" path="res://actors/enemies/slug.gd" id="1_dv6ca"]
 [ext_resource type="Texture2D" uid="uid://b7wu0ed142vh5" path="res://assets/slug-attack.png" id="1_ptj0s"]
 [ext_resource type="Texture2D" uid="uid://ds2yvbws3yn6u" path="res://assets/slug-walk.png" id="2_dv6ca"]
-[ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://actors/hitflash.gdshader" id="2_oaq1v"]
+[ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://hitflash.gdshader" id="2_oaq1v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dv6ca"]
 radius = 40.0

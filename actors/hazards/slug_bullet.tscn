@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvd35md5dlb74"]
+
+[ext_resource type="Script" uid="uid://hxlfpgugc4g6" path="res://actors/hazards/slug_bullet.gd" id="1_k4q81"]
+[ext_resource type="Texture2D" uid="uid://idke8u0phy4m" path="res://assets/slime.png" id="2_1iid2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpvgr"]
+radius = 16.0
+
+[node name="SlugBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_k4q81")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-8.9407e-07, -8.9407e-07)
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("2_1iid2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cpvgr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

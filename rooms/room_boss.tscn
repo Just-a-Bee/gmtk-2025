@@ -1,9 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://d0vsq2llpmshy"]
+[gd_scene format=4 uid="uid://d0vsq2llpmshy"]
 
 [ext_resource type="Script" uid="uid://bflajyhlltioy" path="res://rooms/room_boss.gd" id="1_ikswg"]
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_ojdhv"]
-[ext_resource type="PackedScene" uid="uid://cfhf4eijstbph" path="res://actors/enemies/boss.tscn" id="3_ikswg"]
-[ext_resource type="PackedScene" uid="uid://3fuqvnfd6hhk" path="res://actors/enemies/boolean.tscn" id="4_ojdhv"]
+[ext_resource type="PackedScene" uid="uid://cfhf4eijstbph" path="res://actors/enemies/bosses/boolean/boss.tscn" id="3_ikswg"]
+[ext_resource type="PackedScene" uid="uid://3fuqvnfd6hhk" path="res://actors/enemies/bosses/boolean/boolean.tscn" id="4_ojdhv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
 

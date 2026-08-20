@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bqovoupmlsoif"]
+[gd_scene format=3 uid="uid://bqovoupmlsoif"]
 
-[ext_resource type="Script" uid="uid://dvwh1ofkqkpt" path="res://actors/spider.gd" id="1_hwe5d"]
-[ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://actors/hitflash.gdshader" id="2_5gt53"]
+[ext_resource type="Script" uid="uid://dvwh1ofkqkpt" path="res://actors/enemies/spider.gd" id="1_hwe5d"]
+[ext_resource type="Shader" uid="uid://dkgsasv3sb6ku" path="res://hitflash.gdshader" id="2_5gt53"]
 [ext_resource type="Texture2D" uid="uid://6g8ks0tr6p7a" path="res://assets/spider-walk-sheet.png" id="2_vcyao"]
 [ext_resource type="Texture2D" uid="uid://b14jd4q8307mo" path="res://assets/bug_slash.png" id="4_48i75"]
 [ext_resource type="Texture2D" uid="uid://dttcwqx8xu6c3" path="res://assets/spider-attack-sheet.png" id="4_vcyao"]

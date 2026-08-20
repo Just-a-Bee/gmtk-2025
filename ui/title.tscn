@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctypuq5ni0g62"]
+[gd_scene format=3 uid="uid://ctypuq5ni0g62"]
 
-[ext_resource type="Script" uid="uid://ojrc48bi30a" path="res://title.gd" id="1_co4ec"]
+[ext_resource type="Script" uid="uid://ojrc48bi30a" path="res://ui/title.gd" id="1_co4ec"]
 [ext_resource type="Texture2D" uid="uid://b3kmlafy57j8w" path="res://assets/run.png" id="3_k1m56"]
 [ext_resource type="Texture2D" uid="uid://de5pv4bhv51at" path="res://assets/boss_idle.png" id="4_8lx1x"]
 [ext_resource type="Texture2D" uid="uid://cvn4s67we0mm5" path="res://assets/sword.png" id="4_wsk5t"]
@@ -9,7 +9,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_co4ec"]
 bg_color = Color(0.1, 0.1, 0.1, 1)
 
-[node name="Title" type="Control"]
+[node name="Title" type="Control" unique_id=570546600]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_co4ec")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=98404399]
 layout_mode = 0
 offset_left = 384.0
 offset_top = 168.0
@@ -26,7 +26,7 @@ offset_right = 768.0
 offset_bottom = 424.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_co4ec")
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer" unique_id=2056053011]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 30
@@ -34,11 +34,11 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer2" unique_id=105553695]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Loop" type="RichTextLabel" parent="PanelContainer/MarginContainer2/VBoxContainer"]
+[node name="Loop" type="RichTextLabel" parent="PanelContainer/MarginContainer2/VBoxContainer" unique_id=792635125]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -55,7 +55,7 @@ text = "[color=GREEN]void title():
 fit_content = true
 tab_size = 2
 
-[node name="Logo" type="RichTextLabel" parent="."]
+[node name="Logo" type="RichTextLabel" parent="." unique_id=1921094907]
 layout_mode = 0
 offset_top = 8.0
 offset_right = 1152.0
@@ -65,29 +65,29 @@ bbcode_enabled = true
 text = "[color=RED]void [color=white]loop()"
 horizontal_alignment = 1
 
-[node name="Player" type="Sprite2D" parent="."]
+[node name="Player" type="Sprite2D" parent="." unique_id=2125793319]
 position = Vector2(144, 274)
 texture = ExtResource("3_k1m56")
 hframes = 28
 vframes = 3
 
-[node name="Sword" type="Sprite2D" parent="."]
+[node name="Sword" type="Sprite2D" parent="." unique_id=1125761713]
 position = Vector2(264, 274)
 rotation = 0.523599
 texture = ExtResource("4_wsk5t")
 
-[node name="BossIdle" type="Sprite2D" parent="."]
+[node name="BossIdle" type="Sprite2D" parent="." unique_id=891058336]
 position = Vector2(1000, 338)
 scale = Vector2(2, 2)
 texture = ExtResource("4_8lx1x")
 hframes = 8
 vframes = 8
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2052196986]
 stream = ExtResource("5_k1m56")
 autoplay = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1754581218]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 584.0

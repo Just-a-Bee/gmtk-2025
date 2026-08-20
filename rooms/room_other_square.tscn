@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://co7hc6v7excv0"]
+[gd_scene format=4 uid="uid://co7hc6v7excv0"]
 
 [ext_resource type="Script" uid="uid://cel26bbnbfy5r" path="res://rooms/room.gd" id="1_7v5lh"]
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_c5xnm"]
-[ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/door.tscn" id="3_5sjyd"]
+[ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/interactable/door.tscn" id="3_5sjyd"]
 [ext_resource type="PackedScene" uid="uid://bqovoupmlsoif" path="res://actors/enemies/spider.tscn" id="4_y8523"]
 [ext_resource type="PackedScene" uid="uid://b5baa1ukmbcql" path="res://actors/enemies/slug.tscn" id="5_c5xnm"]
 

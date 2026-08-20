@@ -8,22 +8,31 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="GMTK 2025"
 run/main_scene="uid://ctypuq5ni0g62"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
 [autoload]
 
-Upgrades="*res://upgrades.gd"
-GameStats="*res://game_stats.gd"
-Rooms="*res://rooms.gd"
+Upgrades="*res://autoloads/upgrades.gd"
+GameStats="*res://autoloads/game_stats.gd"
+Rooms="*res://autoloads/rooms.gd"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [display]
 
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 
