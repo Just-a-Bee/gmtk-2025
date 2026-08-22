@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://ui/health_bar.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://nt0h70yakdf5" path="res://assets/left_mouse.png" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ci8pbcnklttff" path="res://ui/error_message.tscn" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://dx2gjw8hfok4d" path="res://ui/dialogue.tscn" id="10_4c57u"]
 [ext_resource type="AudioStream" uid="uid://ce1as41thx2vi" path="res://assets/lvl-normal.wav" id="11_dg77c"]
 [ext_resource type="AudioStream" uid="uid://bcdyiabw0gjrw" path="res://assets/boss-theme.wav" id="12_w48qg"]
 [ext_resource type="AudioStream" uid="uid://cu7tuesqykq8r" path="res://assets/lvl-chill.wav" id="12_ycdy4"]
@@ -129,30 +128,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Dialogue:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Dialogue:active")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_vivmo"]
 resource_name = "hide_dialogue"
@@ -169,30 +144,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dialogue:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Dialogue:active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_272bh"]
@@ -250,30 +201,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dialogue:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Dialogue:active")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ycdy4"]
@@ -573,14 +500,6 @@ scale = Vector2(1e-05, 1e-05)
 unique_name_in_owner = true
 process_mode = 3
 custom_minimum_size = Vector2(488, 280)
-
-[node name="Dialogue" parent="." unique_id=1936753174 instance=ExtResource("10_4c57u")]
-visible = false
-layout_mode = 1
-offset_left = 224.0
-offset_top = 424.0
-offset_right = 224.0
-offset_bottom = 424.0
 
 [node name="Battle" type="AudioStreamPlayer" parent="." unique_id=1243056112]
 process_mode = 3

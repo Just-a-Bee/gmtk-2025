@@ -147,11 +147,7 @@ func show_deleter():
 	$UpgradeMenu.show_deleter()
 	$AnimationPlayer.play("show_upgrades")
 
-func play_dialogue():
-	get_tree().paused = true
-	$Dialogue.show_next_line()
-	$AnimationPlayer.play("show_dialogue")
-	
+
 
 func end_dialogue():
 	$AnimationPlayer.play("hide_dialogue")

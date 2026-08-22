@@ -1,0 +1,14 @@
+~ intro
+Vector: Greetings [color=MEDIUM_ORCHID]Integer[/color]...
+Vector: I've called upon you because [color=YELLOW]The Program[/color] is in grave danger.
+Vector: You're our only hope for stopping [color=RED]Boolean[/color] and its evil scheme.
+Vector: It has invoked a recursive function, causing an infinite loop.
+Vector: During this loop it is trying to upload itself to "the net" in an attempt to remain [color=RED]True[/color] forver
+Vector: You must stop it, [color=MEDIUM_ORCHID]Integer[/color], before it's too late and [color=YELLOW]The Program[/color] crashes.
+Vector: On the right side of the screen you can see the code in the loop() function.
+Vector: Below that is the remaining memory. If that runs out it's all over.
+Vector: Throughout your journey you will encounter lines of code that you can add to this function to aid you.
+Vector: Use them wisely.
+Vector: Good luck [color=MEDIUM_ORCHID]Integer[/color]
+Vector: We're [color=MEDIUM_ORCHID]counting[/color] on you.
+=> END

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://ckm050biqoire"
+path="res://.godot/imported/vector.dialogue-9ec6cc045d3e908b7815b84963dc42f1.tres"
+
+[deps]
+
+source_file="res://dialogue/vector.dialogue"
+dest_files=["res://.godot/imported/vector.dialogue-9ec6cc045d3e908b7815b84963dc42f1.tres"]
+
+[params]
+
+defaults=true
