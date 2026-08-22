@@ -3,6 +3,7 @@ extends Block
 func _init():
 	text = "for int i in 5:\n\t"
 	tooltip = "Repeats the next line five times"
+	collect_only_once = true
 
 var repeats := 4
 

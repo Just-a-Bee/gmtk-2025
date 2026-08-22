@@ -78,6 +78,10 @@ func show_upgrades():
 func select_upgrade(index, object, insert_index):
 	if object is Block:
 		add_block(object, insert_index)
+		if object.collect_only_once:
+			var path = upgrades_shown[index].upgrade_path
+			var rarity = upgrades_shown[index].rarity
+			Upgrades.remove_path(path, rarity)
 	$AnimationPlayer.play("hide_upgrades")
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false

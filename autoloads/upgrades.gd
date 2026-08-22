@@ -61,3 +61,6 @@ func random_rarity()->int:
 		rarity += 1
 	print("Rarity chosen: ", rarity)
 	return rarity
+
+func remove_path(path:String, rarity : int):
+	upgrade_arrays[rarity].erase(path)

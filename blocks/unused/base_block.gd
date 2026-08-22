@@ -9,6 +9,8 @@ var main:Main
 var type = "Code Block"
 var text = "this is a block of code\n"
 var tooltip = "this block of code does this!"
+var collect_only_once : bool = false
+
 var lines := 1
 var current_line := 0
 var is_finished := false

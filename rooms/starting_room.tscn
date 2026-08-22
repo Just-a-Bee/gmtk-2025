@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_xprn1"]
 [ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/interactable/door.tscn" id="3_pgmiq"]
 [ext_resource type="PackedScene" uid="uid://bkbmrblvovusn" path="res://actors/interactable/npc.tscn" id="4_4r8be"]
-[ext_resource type="PackedScene" uid="uid://bfnhjq2wfy3ql" path="res://actors/interactable/items/code_pickup.tscn" id="5_xprn1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
 
@@ -230,12 +229,3 @@ material = SubResource("CanvasItemMaterial_pgmiq")
 position = Vector2(1130, 230)
 scale = Vector2(11.375, 11.375)
 texture = SubResource("GradientTexture2D_510at")
-
-[node name="CodePickup" parent="." unique_id=1255418653 instance=ExtResource("5_xprn1")]
-position = Vector2(615, 773)
-
-[node name="CodePickup2" parent="." unique_id=1589855422 instance=ExtResource("5_xprn1")]
-position = Vector2(914, 740)
-
-[node name="CodePickup3" parent="." unique_id=1513699149 instance=ExtResource("5_xprn1")]
-position = Vector2(748, 441)
