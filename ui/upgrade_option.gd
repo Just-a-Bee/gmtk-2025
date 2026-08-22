@@ -5,7 +5,7 @@ var upgrade
 
 func set_upgrade(upgrade, rarity):
 	%UpgradeType.text = upgrade.type
-	%Body.text = upgrade.text
+	%Body.text = upgrade.tooltip
 	%RarityText.text = Upgrades.rarity_names[rarity]
 	self.upgrade = upgrade
 

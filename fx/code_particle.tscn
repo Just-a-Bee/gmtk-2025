@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://db47d5ywsdg2p"]
+
+[ext_resource type="Script" uid="uid://bg7h0f5vlgiru" path="res://fx/code_particle.gd" id="1_mwndd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtglo"]
+bg_color = Color(0.025698692, 0.13710546, 0, 1)
+
+[sub_resource type="Animation" id="Animation_vpkok"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rfkl0"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2.297397, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjmiu"]
+_data = {
+&"RESET": SubResource("Animation_vpkok"),
+&"appear": SubResource("Animation_rfkl0")
+}
+
+[node name="CodeParticle" type="Node2D" unique_id=229735863]
+script = ExtResource("1_mwndd")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1959995899]
+offset_right = 78.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dtglo")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1307644087]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=1668523821]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "loop()"
+
+[node name="Timer" type="Timer" parent="." unique_id=517968721]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=759407091]
+libraries/ = SubResource("AnimationLibrary_mjmiu")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

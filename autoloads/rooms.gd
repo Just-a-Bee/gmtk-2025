@@ -17,7 +17,6 @@ var room_queue = []
 
 func _ready():
 	reset_room_queue()
-	print(room_queue)
 
 var num_rooms = 4
 

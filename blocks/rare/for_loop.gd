@@ -21,6 +21,8 @@ func execute():
 		
 		var block:Block = main.loop_arr[main.current_block + 1]
 		block.execute()
+		main.player.spawn_particle(block)
+		
 		if not block.is_finished:
 			await block.finished
 		block.reset()

@@ -33,6 +33,8 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		if can_attack():
 			attack()
+	if event.is_action_pressed("debug"):
+		spawn_particle(Block.new())
 
 func _ready():
 	$AnimationPlayer.play("idle")
@@ -163,6 +165,19 @@ func take_damage(damage_amount:int):
 			die.emit()
 		$InvTimer.start()
 
+
+var particle_packed : PackedScene = load("res://fx/code_particle.tscn")
+var particle_velocity := 200
+
+func spawn_particle(block):
+	var particle = particle_packed.instantiate()
+	particle.position = position
+	particle.text = block.text
+	var particle_dir = (position - get_global_mouse_position()).normalized()
+	particle.velocity = particle_dir * particle_velocity
+	
+	get_parent().add_child(particle)
+	
 
 func _on_interact_range_body_entered(body):
 	interactible = body
