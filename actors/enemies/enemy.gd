@@ -17,7 +17,8 @@ func take_damage(n):
 
 func _process(delta):
 	flash = max(flash-delta*3,0)
-	$Sprite2D.material.set_shader_parameter("flash", flash)
+	if $Sprite2D.material:
+		$Sprite2D.material.set_shader_parameter("flash", flash)
 
 func die():
 	get_parent().enemy_died(self)
