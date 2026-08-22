@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://brdj4i3iq7du5"]
+[gd_scene format=3 uid="uid://brdj4i3iq7du5"]
 
 [ext_resource type="PackedScene" uid="uid://l251du7qg2ut" path="res://ui/upgrade_option.tscn" id="1_82rw7"]
 [ext_resource type="Script" uid="uid://enuotbyt4egh" path="res://ui/upgrade_menu.gd" id="1_ppotq"]
@@ -11,41 +11,41 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 
-[node name="UpgradeMenu" type="CenterContainer"]
+[node name="UpgradeMenu" type="CenterContainer" unique_id=1493280529]
 process_mode = 3
 offset_right = 1024.0
 offset_bottom = 502.0
 script = ExtResource("1_ppotq")
 
-[node name="Upgrades" type="VBoxContainer" parent="."]
+[node name="Upgrades" type="VBoxContainer" parent="." unique_id=1867316927]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="UpgradeOption" parent="Upgrades" instance=ExtResource("1_82rw7")]
+[node name="UpgradeOption" parent="Upgrades" unique_id=1968522356 instance=ExtResource("1_82rw7")]
 layout_mode = 2
 
-[node name="UpgradeOption2" parent="Upgrades" instance=ExtResource("1_82rw7")]
+[node name="UpgradeOption2" parent="Upgrades" unique_id=71127760 instance=ExtResource("1_82rw7")]
 layout_mode = 2
 index = 1
 
-[node name="UpgradeOption3" parent="Upgrades" instance=ExtResource("1_82rw7")]
+[node name="UpgradeOption3" parent="Upgrades" unique_id=1213225575 instance=ExtResource("1_82rw7")]
 layout_mode = 2
 index = 2
 
-[node name="CodeEditorWindow" type="PanelContainer" parent="."]
+[node name="CodeEditorWindow" type="PanelContainer" parent="." unique_id=242550357]
 visible = false
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ppotq")
 
-[node name="MarginContainer" type="MarginContainer" parent="CodeEditorWindow"]
+[node name="MarginContainer" type="MarginContainer" parent="CodeEditorWindow" unique_id=647327394]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="CodeEditText" type="RichTextLabel" parent="CodeEditorWindow/MarginContainer"]
+[node name="CodeEditText" type="RichTextLabel" parent="CodeEditorWindow/MarginContainer" unique_id=367330222]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 20
@@ -58,7 +58,7 @@ text = "void loop() {
 }
 "
 
-[node name="Label" type="Label" parent="CodeEditorWindow/MarginContainer"]
+[node name="Label" type="Label" parent="CodeEditorWindow/MarginContainer" unique_id=2079761915]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 20
@@ -67,4 +67,4 @@ press enter to confirm"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1085616562]

@@ -2,12 +2,12 @@ extends Control
 @onready var options = $Upgrades
 @onready var main:Main = get_parent()
 
-func display_upgrade(index, upgrade):
+func display_upgrade(upgrade_option : Upgrades.UpgradeOption):
 	options.show()
 	$CodeEditorWindow.hide()
-	var option = options.get_child(index)
-	option.set_text(upgrade.type, upgrade.get_text())
-	option.upgrade = upgrade
+	var option = options.get_child(upgrade_option.index)
+	var upgrade_instance = load(upgrade_option.upgrade_path).new()
+	option.set_upgrade(upgrade_instance, upgrade_option.rarity)
 
 var selected_index := 0
 func upgrade_clicked(index, upgrade):

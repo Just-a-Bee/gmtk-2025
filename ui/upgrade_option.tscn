@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://l251du7qg2ut"]
+[gd_scene format=3 uid="uid://l251du7qg2ut"]
 
 [ext_resource type="Script" uid="uid://suqmmoxgwi01" path="res://ui/upgrade_option.gd" id="1_v5qt0"]
 [ext_resource type="Texture2D" uid="uid://u3yf8k7nme3s" path="res://assets/code_select.png" id="2_ngqja"]
@@ -9,7 +9,7 @@ bg_color = Color(0.977151, 0.900548, 0.520703, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5qt0"]
 bg_color = Color(0.129412, 0.219608, 0.109804, 1)
 
-[node name="UpgradeOption" type="PanelContainer"]
+[node name="UpgradeOption" type="PanelContainer" unique_id=841668879]
 custom_minimum_size = Vector2(592, 154)
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,14 +23,14 @@ size_flags_vertical = 4
 theme_type_variation = &"UpgradePanel"
 script = ExtResource("1_v5qt0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2010942649]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=603816819]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4v74f")
 
-[node name="UpgradeType" type="Label" parent="VBoxContainer/PanelContainer"]
+[node name="UpgradeType" type="Label" parent="VBoxContainer/PanelContainer" unique_id=66413428]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -38,7 +38,7 @@ theme_override_font_sizes/font_size = 30
 text = "Code Block"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1736321252]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 15
@@ -46,11 +46,11 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer" unique_id=534779769]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v5qt0")
 
-[node name="Body" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer"]
+[node name="Body" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=1796339021]
 unique_name_in_owner = true
 layout_mode = 2
 text = "for (int i = 0; i < 5; i++)
@@ -58,16 +58,25 @@ text = "for (int i = 0; i < 5; i++)
 Repeats next instruction five times"
 autowrap_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=81672683]
 visible = false
 texture = ExtResource("2_ngqja")
 centered = false
 offset = Vector2(-25, -25)
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1623037886]
 layout_mode = 2
 focus_mode = 0
 flat = true
+
+[node name="RarityText" type="Label" parent="." unique_id=1207621136]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "Rarity"
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_mouse_entered"]

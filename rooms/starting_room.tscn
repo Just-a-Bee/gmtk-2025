@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cxt7diqgrxv81" path="res://assets/iso_tileset.png" id="2_xprn1"]
 [ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/interactable/door.tscn" id="3_pgmiq"]
 [ext_resource type="PackedScene" uid="uid://bkbmrblvovusn" path="res://actors/interactable/npc.tscn" id="4_4r8be"]
+[ext_resource type="PackedScene" uid="uid://bfnhjq2wfy3ql" path="res://actors/interactable/items/code_pickup.tscn" id="5_xprn1"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
 
@@ -168,18 +169,18 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
-[node name="Room" type="NavigationRegion2D" groups=["room"]]
+[node name="Room" type="NavigationRegion2D" unique_id=968347326 groups=["room"]]
 modulate = Color(0.666667, 0.666667, 0.666667, 1)
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_7mycd")
 script = ExtResource("1_wr28x")
 
-[node name="Walls" type="TileMapLayer" parent="."]
+[node name="Walls" type="TileMapLayer" parent="." unique_id=62454405]
 y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
 tile_set = SubResource("TileSet_6436r")
 
-[node name="Floor" type="TileMapLayer" parent="."]
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1106008280]
 z_index = -1
 y_sort_enabled = true
 scale = Vector2(1.5, 1.5)
@@ -187,20 +188,20 @@ tile_map_data = PackedByteArray("AAAbAAUAAAABAAAAAAAcAAUAAAABAAAAAAAdAAUAAAACAAA
 tile_set = SubResource("TileSet_v6lk3")
 x_draw_order_reversed = true
 
-[node name="ItemSpawn" type="Node2D" parent="."]
+[node name="ItemSpawn" type="Node2D" parent="." unique_id=1140399714]
 position = Vector2(760, 512)
 
-[node name="Door" parent="." instance=ExtResource("3_pgmiq")]
+[node name="Door" parent="." unique_id=158286686 instance=ExtResource("3_pgmiq")]
 position = Vector2(527, 363)
 scale = Vector2(-1.5, 1.5)
 
-[node name="PlayerSpawn" type="Node2D" parent="."]
+[node name="PlayerSpawn" type="Node2D" parent="." unique_id=916290902]
 position = Vector2(1192, 792)
 
-[node name="StaticBody2D" parent="." instance=ExtResource("4_4r8be")]
+[node name="StaticBody2D" parent="." unique_id=1532475914 instance=ExtResource("4_4r8be")]
 position = Vector2(1111, 342)
 
-[node name="Label" type="Label" parent="StaticBody2D"]
+[node name="Label" type="Label" parent="StaticBody2D" unique_id=1620514701]
 offset_left = -728.0
 offset_top = 242.0
 offset_right = -296.0
@@ -209,23 +210,32 @@ theme_override_font_sizes/font_size = 30
 text = "Left Click: Attack
 Right Click: Roll"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=299691202]
 position = Vector2(1203, 288)
 scale = Vector2(15.9375, 15.9375)
 shadow_color = Color(0, 0, 0, 0.909804)
 texture = SubResource("GradientTexture2D_xprn1")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=281873109]
 position = Vector2(446, 340)
 scale = Vector2(15.9375, 15.9375)
 energy = 0.7
 shadow_color = Color(0, 0, 0, 0.909804)
 texture = SubResource("GradientTexture2D_xprn1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2103680992]
 visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_pgmiq")
 position = Vector2(1130, 230)
 scale = Vector2(11.375, 11.375)
 texture = SubResource("GradientTexture2D_510at")
+
+[node name="CodePickup" parent="." unique_id=1255418653 instance=ExtResource("5_xprn1")]
+position = Vector2(615, 773)
+
+[node name="CodePickup2" parent="." unique_id=1589855422 instance=ExtResource("5_xprn1")]
+position = Vector2(914, 740)
+
+[node name="CodePickup3" parent="." unique_id=1513699149 instance=ExtResource("5_xprn1")]
+position = Vector2(748, 441)

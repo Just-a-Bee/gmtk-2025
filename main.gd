@@ -5,7 +5,7 @@ signal enemy_killed
 signal key_pressed
 signal resume_execution
 
-var timeout := "res://blocks/timeout.gd"
+var timeout := "res://blocks/common/timeout.gd"
 var loop_path := "res://blocks/loop.gd"
 
 @onready var player:Player = %Player
@@ -67,16 +67,15 @@ func increment_stack_count():
 	code_window.set_stack_count(stack_count)
 
 
-var upgrades_shown:Array = []
+var upgrades_shown:Array[Upgrades.UpgradeOption] = []
 func show_upgrades():
 	upgrades_shown = Upgrades.pick_upgrades()
 	for i in num_upgrades:
-		$UpgradeMenu.display_upgrade(i, load(upgrades_shown[i].upgrade).new())
+		$UpgradeMenu.display_upgrade(upgrades_shown[i])
 	$AnimationPlayer.play("show_upgrades")
 	get_tree().paused = true
 
 func select_upgrade(index, object, insert_index):
-	Upgrades.remove_from_array(upgrades_shown[index])
 	if object is Block:
 		add_block(object, insert_index)
 	$AnimationPlayer.play("hide_upgrades")

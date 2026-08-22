@@ -3,9 +3,11 @@ extends PanelContainer
 @export var index := 0
 var upgrade
 
-func set_text(upgrade_type, description):
-	%UpgradeType.text = upgrade_type
-	%Body.text = description
+func set_upgrade(upgrade, rarity):
+	%UpgradeType.text = upgrade.type
+	%Body.text = upgrade.text
+	%RarityText.text = Upgrades.rarity_names[rarity]
+	self.upgrade = upgrade
 
 
 func _on_mouse_entered():

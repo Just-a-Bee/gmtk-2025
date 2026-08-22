@@ -1,46 +1,63 @@
 extends Node
-# TODO: add rarity to choices
-var upgrade_array:Array[String] = [
-	"res://blocks/timeout.gd",
-	"res://blocks/speedup.gd",
-	"res://blocks/heal.gd",
-	"res://blocks/await_any_key_pressed.gd",
-	"res://blocks/damage_random.gd",
-	"res://blocks/await_take_damage.gd",
-	"res://blocks/for_loop.gd",
-	"res://blocks/damage_up.gd",
-	"res://blocks/all_damage_up.gd",
-	"res://blocks/attack_size_up.gd",
-	"res://blocks/await_enemy_killed.gd",
-	"res://blocks/damage_all.gd"
+
+# 2d array [rarity][index]
+var upgrade_arrays:Array[Array] = []
+
+const rarity_names : Array[String] = [
+	"common",
+	"uncommon",
+	"rare"
 ]
 
-var upgrade_queue = []
+var rarity_chances = [
+	75, # common
+	20, # uncommon
+	5 # rare
+]
+
+const upgrades_shown := 3
 
 func _ready():
-	reset_upgrade_queue()
+	populate_upgrade_arrays()
 
-func reset_upgrade_queue():
-	upgrade_queue = upgrade_array.duplicate()
-	upgrade_queue.shuffle()
-	print(upgrade_queue)	
+func populate_upgrade_arrays():
+	for rarity in rarity_names:
+		var dir :=  DirAccess.open("res://blocks/" + rarity)
+		var upgrades : Array[String] = []
+		if dir:
+			dir.list_dir_begin()
+			var file_name := dir.get_next()
+			while file_name != "":
+				if not file_name.contains(".uid"):
+					upgrades.push_back("res://blocks/" + rarity + "/" + file_name)
+				file_name = dir.get_next()
+		upgrade_arrays.push_back(upgrades)
 
 
-class upgrade_option:
-	var upgrade
+
+class UpgradeOption:
+	var upgrade_path
 	var index := 0
+	var rarity := 0
 
-func pick_upgrades():
-	var choices = []
+func pick_upgrades()->Array[UpgradeOption]:
+	var choices : Array[UpgradeOption] = []
 	
-	for i in 3:
-		print(i)
-		var choice = upgrade_option.new()
+	for i in upgrades_shown:
+		var rarity := random_rarity()
+		var choice := UpgradeOption.new()
+		var upgarde_index := randi_range(0,upgrade_arrays[rarity].size()-1)
 		choice.index = i
-		choice.upgrade = upgrade_queue[i]
+		choice.rarity = rarity
+		choice.upgrade_path = upgrade_arrays[rarity][upgarde_index]
 		choices.push_back(choice)
 	return choices
 
-func remove_from_array(choice:upgrade_option):
-	upgrade_queue.pop_at(choice.index)
-	upgrade_queue.shuffle()
+func random_rarity()->int:
+	var roll := randi_range(1,100)
+	var rarity := 0
+	while roll > rarity_chances[rarity]:
+		roll -= rarity_chances[rarity]
+		rarity += 1
+	print("Rarity chosen: ", rarity)
+	return rarity
