@@ -7,7 +7,6 @@ signal resume_execution
 
 var timeout := "res://blocks/common/timeout.gd"
 var loop_path := "res://blocks/loop.gd"
-var test := "res://blocks/rare/for_loop.gd"
 
 @onready var player:Player = %Player
 @onready var code_window:CodeWindow = %CodeWindow
@@ -19,7 +18,6 @@ var num_upgrades = 3
 var do_execute_loop := false
 
 func _ready():
-	add_block(load(test).new())
 	add_block(load(timeout).new())
 	add_block(load(loop_path).new())
 	update_text()
