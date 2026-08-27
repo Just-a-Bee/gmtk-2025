@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cuwetf18hwmel"]
+
+[ext_resource type="Script" uid="uid://dx46xn4mrqdy" path="res://ui/settings_menu.gd" id="1_h6jc8"]
+
+[node name="SettingsMenu" type="PanelContainer" unique_id=175608776]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -758.0
+offset_bottom = -243.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h6jc8")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1857699327]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2108556161]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1280638226]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="VolLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=488862931]
+layout_mode = 2
+text = "Volume"
+
+[node name="VolSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=1652620466]
+layout_mode = 2
+max_value = 10.0
+value = 8.0
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=914795692]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

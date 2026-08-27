@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://ce1as41thx2vi" path="res://assets/lvl-normal.wav" id="11_dg77c"]
 [ext_resource type="AudioStream" uid="uid://bcdyiabw0gjrw" path="res://assets/boss-theme.wav" id="12_w48qg"]
 [ext_resource type="AudioStream" uid="uid://cu7tuesqykq8r" path="res://assets/lvl-chill.wav" id="12_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://n1cvaptowsdf" path="res://ui/pause_menu.tscn" id="13_ycdy4"]
 
 [sub_resource type="Animation" id="Animation_dg77c"]
 length = 0.001
@@ -386,6 +387,8 @@ _data = {
 [node name="Main" type="Control" unique_id=1105647639 groups=["main"]]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
 script = ExtResource("1_ig7tw")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1394317635]
@@ -519,6 +522,21 @@ autoplay = true
 
 [node name="MusicAnimator" type="AnimationPlayer" parent="." unique_id=1787280616]
 libraries/ = SubResource("AnimationLibrary_074og")
+
+[node name="PauseMenu" parent="." unique_id=1047243152 instance=ExtResource("13_ycdy4")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -61.0
+offset_right = 58.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="die" from="SubViewportContainer/SubViewport/Node2D/Player" to="." method="_on_player_die"]
 [connection signal="finished" from="Battle" to="." method="_on_battle_finished"]
