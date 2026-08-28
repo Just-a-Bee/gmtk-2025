@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://b4et0ihgqiauq"
+path="res://.godot/imported/garbage.dialogue-87f1485f9b124c96a8d610a6e9def5a2.tres"
+
+[deps]
+
+source_file="res://dialogue/garbage.dialogue"
+dest_files=["res://.godot/imported/garbage.dialogue-87f1485f9b124c96a8d610a6e9def5a2.tres"]
+
+[params]
+
+defaults=true

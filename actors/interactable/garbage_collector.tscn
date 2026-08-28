@@ -1,86 +1,86 @@
-[gd_scene format=3 uid="uid://bkbmrblvovusn"]
+[gd_scene format=3 uid="uid://d16wsvo0btalr"]
 
-[ext_resource type="Script" uid="uid://cv6uc1sgpghwp" path="res://actors/interactable/npc.gd" id="1_xxcha"]
-[ext_resource type="Texture2D" uid="uid://is0whexo17qh" path="res://assets/vector-sheet.png" id="2_xxcha"]
+[ext_resource type="Script" uid="uid://cv6uc1sgpghwp" path="res://actors/interactable/npc.gd" id="1_njctw"]
+[ext_resource type="Texture2D" uid="uid://is0whexo17qh" path="res://assets/vector-sheet.png" id="2_3inly"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kh24r"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(0, 0, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ul7y6"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(256, 0, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc6q4"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(512, 0, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mcvl2"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(768, 0, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d61ma"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(1024, 0, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slxoh"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(0, 400, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l64hl"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(256, 400, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_215dd"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(512, 400, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5bpe"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(768, 400, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_upjdb"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(1024, 400, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u41a8"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(0, 800, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgete"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(256, 800, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gu3sj"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(512, 800, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ytjd8"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(768, 800, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hivs1"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(1024, 800, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_faxwa"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(0, 1200, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwlqr"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(256, 1200, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wnt0c"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(512, 1200, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur8k0"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(768, 1200, 256, 400)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlw2c"]
-atlas = ExtResource("2_xxcha")
+atlas = ExtResource("2_3inly")
 region = Rect2(1024, 1200, 256, 400)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvame"]
@@ -154,16 +154,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxcha"]
 radius = 40.0
 
-[node name="StaticBody2D" type="StaticBody2D" unique_id=1070153401]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=691183801]
 collision_layer = 10
 collision_mask = 0
-script = ExtResource("1_xxcha")
+script = ExtResource("1_njctw")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=409364335]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1974948014]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_pvame")
-frame_progress = 0.885988
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1759751724]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=443239564]
 position = Vector2(0, 64)
 shape = SubResource("CircleShape2D_xxcha")

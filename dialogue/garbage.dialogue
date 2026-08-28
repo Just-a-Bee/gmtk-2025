@@ -1,0 +1,22 @@
+~ intro
+Garbage Collector: THE MEMORY LEAKS!! IT LEAKS AND LEAKS AND-
+Garbage Collector: All that unrefrenced data... lost.
+Garbage Collector: I'll never be able to collect it all...
+if GameStats.garbage_data > 0
+	=> shop_unlock
+else 
+	Integer: You okay?
+	Garbage Collector: If you find any Garbage Data please bring it to me!
+	Garbage Collector: Those poor bytes left full of information that means nothing...
+	=> END
+
+~ shop_unlock
+Garbage Collector: Wait... do you have some Garbage Data on you?
+Integer: Yes, I found it on my journey thorugh the program.
+Garbage Collector: Give it to me!!
+=> open_shop
+
+
+~ open_shop
+NPCManager.open_shop.emit()
+=> END

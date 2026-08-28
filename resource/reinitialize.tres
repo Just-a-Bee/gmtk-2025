@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PermanentUpgrade" format=3 uid="uid://c116fed3q5g5s"]
+
+[ext_resource type="Script" uid="uid://bw75vk5cd3vw5" path="res://permanent_upgrade.gd" id="1_h5lky"]
+
+[resource]
+script = ExtResource("1_h5lky")
+name = "Re-Initialization"
+tooltip = "When dying Integer is revived at 50% HP instead. Triggers [value] times."
+cost_array = Array[int]([100, 500, 1000])
+value_array = Array[int]([0, 1, 2, 3])
+metadata/_custom_type_script = "uid://bw75vk5cd3vw5"

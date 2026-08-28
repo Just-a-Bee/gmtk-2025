@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PermanentUpgrade" format=3 uid="uid://bxsw71gyt64sf"]
+
+[ext_resource type="Script" uid="uid://bw75vk5cd3vw5" path="res://permanent_upgrade.gd" id="1_2oi1u"]
+
+[resource]
+script = ExtResource("1_2oi1u")
+name = "Max HP Increase"
+tooltip = "Integer's max HP is increased by [value]%"
+cost_array = Array[int]([30, 40, 50, 60, 70, 80, 90, 100, 110, 120])
+value_array = Array[int]([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+text_before = "+"
+text_after = "%"
+metadata/_custom_type_script = "uid://bw75vk5cd3vw5"

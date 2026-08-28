@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b7o1foyoix61t" path="res://ui/pause_menu.gd" id="1_50142"]
 [ext_resource type="PackedScene" uid="uid://cuwetf18hwmel" path="res://ui/settings_menu.tscn" id="2_ejwgg"]
+[ext_resource type="PackedScene" uid="uid://b6ric27ocxfcu" path="res://ui/garbage_shop.tscn" id="3_fob5h"]
 
-[node name="Control" type="Control" unique_id=1925004041]
+[node name="Menus" type="Control" unique_id=1925004041]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
@@ -55,7 +56,14 @@ offset_bottom = 218.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="GarbageShop" parent="." unique_id=2124739603 instance=ExtResource("3_fob5h")]
+visible = false
+layout_mode = 1
+offset_right = 247.0
+offset_bottom = 142.0
+
 [connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]
+[connection signal="closed" from="GarbageShop" to="." method="_on_garbage_shop_closed"]
