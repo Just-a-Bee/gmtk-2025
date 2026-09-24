@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bdfhk2x6l11ph"]
+
+[ext_resource type="PackedScene" uid="uid://b64cl8aeweoxr" path="res://ui/code_window.tscn" id="1_276te"]
+[ext_resource type="Script" uid="uid://bwn6hytkimppm" path="res://ui/hud.gd" id="1_546lt"]
+[ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://ui/health_bar.gd" id="2_546lt"]
+
+[node name="HUD" type="Control" unique_id=870251210]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_546lt")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1844856151]
+position = Vector2(832, 400)
+
+[node name="CodeWindow" parent="Node2D" unique_id=650176461 instance=ExtResource("1_276te")]
+unique_name_in_owner = true
+offset_left = -8.0
+offset_right = 320.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=301391477]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 39.0
+mouse_filter = 2
+value = 50.0
+show_percentage = false
+script = ExtResource("2_546lt")
+
+[node name="BossBar" type="ProgressBar" parent="." unique_id=941836222]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 608.0
+offset_right = 1024.0
+offset_bottom = 631.0
+mouse_filter = 2
+max_value = 300.0
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="BossBar" unique_id=1232130520]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 126.0
+offset_bottom = 3.0
+theme_override_font_sizes/font_size = 30
+text = "Boolean"

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bvne0tb413hjj" path="res://ui/garbage_shop.gd" id="1_0yawj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhqgn"]
+bg_color = Color(0.70591927, 0.59018373, 0.16679665, 1)
+
 [node name="GarbageShop" type="PanelContainer" unique_id=2124739603]
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +13,7 @@ offset_right = -730.0
 offset_bottom = -312.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhqgn")
 script = ExtResource("1_0yawj")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1558897444]

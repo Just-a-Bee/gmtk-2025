@@ -2,14 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cvgdevao5lar5" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://g0xsloqsre7b" path="res://actors/player/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b64cl8aeweoxr" path="res://ui/code_window.tscn" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cei7kpgfyfchu" path="res://actors/player/player_camera.gd" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://yeoq2r8pinas" path="res://rooms/starting_room.tscn" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://brdj4i3iq7du5" path="res://ui/upgrade_menu.tscn" id="7_5vw27"]
-[ext_resource type="Script" uid="uid://b6c0nqesmkaqe" path="res://ui/health_bar.gd" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://nt0h70yakdf5" path="res://assets/left_mouse.png" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://ci8pbcnklttff" path="res://ui/error_message.tscn" id="9_kek77"]
 [ext_resource type="AudioStream" uid="uid://ce1as41thx2vi" path="res://assets/lvl-normal.wav" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://bdfhk2x6l11ph" path="res://ui/hud.tscn" id="12_dg77c"]
 [ext_resource type="AudioStream" uid="uid://bcdyiabw0gjrw" path="res://assets/boss-theme.wav" id="12_w48qg"]
 [ext_resource type="AudioStream" uid="uid://cu7tuesqykq8r" path="res://assets/lvl-chill.wav" id="12_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://n1cvaptowsdf" path="res://ui/pause_menu.tscn" id="13_ycdy4"]
@@ -414,14 +413,6 @@ script = ExtResource("3_7mycd")
 
 [node name="Room" parent="SubViewportContainer/SubViewport/Node2D" unique_id=2082080220 instance=ExtResource("4_kek77")]
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1406310558]
-position = Vector2(832, 400)
-
-[node name="CodeWindow" parent="Node2D" unique_id=961134378 instance=ExtResource("3_1bvp3")]
-unique_name_in_owner = true
-offset_left = -8.0
-offset_right = 320.0
-
 [node name="InteractPrompt" type="HBoxContainer" parent="." unique_id=1585812873]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -443,37 +434,6 @@ text = ":Interact"
 [node name="InteractAnimator" type="AnimationPlayer" parent="InteractPrompt" unique_id=804146341]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_ycdy4")
-
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=286505636]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 256.0
-offset_bottom = 39.0
-mouse_filter = 2
-value = 50.0
-show_percentage = false
-script = ExtResource("7_272bh")
-
-[node name="BossBar" type="ProgressBar" parent="." unique_id=787064507]
-visible = false
-layout_mode = 0
-offset_left = 128.0
-offset_top = 608.0
-offset_right = 1024.0
-offset_bottom = 631.0
-mouse_filter = 2
-max_value = 300.0
-value = 50.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="BossBar" unique_id=1939056399]
-layout_mode = 0
-offset_top = -32.0
-offset_right = 126.0
-offset_bottom = 3.0
-theme_override_font_sizes/font_size = 30
-text = "Boolean"
 
 [node name="Greyout" type="ColorRect" parent="." unique_id=1428284086]
 modulate = Color(1, 1, 1, 0)
@@ -537,6 +497,9 @@ offset_right = 58.0
 offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HUD" parent="." unique_id=870251210 instance=ExtResource("12_dg77c")]
+layout_mode = 0
 
 [connection signal="die" from="SubViewportContainer/SubViewport/Node2D/Player" to="." method="_on_player_die"]
 [connection signal="finished" from="Battle" to="." method="_on_battle_finished"]

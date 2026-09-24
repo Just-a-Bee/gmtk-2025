@@ -1,4 +1,5 @@
 ~ intro
+=> open_shop
 Garbage Collector: THE MEMORY LEAKS!! IT LEAKS AND LEAKS AND-
 Garbage Collector: All that unrefrenced data... lost.
 Garbage Collector: I'll never be able to collect it all...
@@ -18,5 +19,5 @@ Garbage Collector: Give it to me!!
 
 
 ~ open_shop
-NPCManager.open_shop.emit()
+$> NpcManager.open_shop.emit()
 => END

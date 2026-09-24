@@ -8,8 +8,12 @@ func _ready():
 
 
 func _on_purchase_pressed() -> void:
-	upgrade.upgrade_index += 1
+	GameStats.garbage_data -= get_current_cost()
+	GameStats.increment_upgrade(upgrade)
 	update()
+
+func get_current_cost()->int:
+	return upgrade.cost_array[upgrade.upgrade_index]
 
 
 func update():
@@ -20,7 +24,12 @@ func update():
 	
 	
 	if upgrade.upgrade_index < upgrade.cost_array.size(): 
-		%Cost.text = str(upgrade.cost_array[upgrade.upgrade_index])
+		%Cost.text = str(get_current_cost())
+		if get_current_cost() > GameStats.garbage_data:
+			%Purchase.disabled = true
+		else:
+			%Purchase.disabled = false
 	else:
 		%Cost.text = "MAX"
 		%Purchase.disabled = true
+		

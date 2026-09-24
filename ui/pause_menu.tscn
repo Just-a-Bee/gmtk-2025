@@ -8,14 +8,17 @@
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
-offset_right = 175.0
-offset_bottom = 215.0
+offset_right = 500.0
+offset_bottom = 500.0
 script = ExtResource("1_50142")
 
 [node name="PausePanel" type="PanelContainer" parent="." unique_id=1503537897]
-layout_mode = 0
-offset_right = 175.0
-offset_bottom = 215.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PausePanel" unique_id=121009018]
 layout_mode = 2
@@ -47,20 +50,15 @@ text = "Quit"
 
 [node name="SettingsMenu" parent="." unique_id=175608776 instance=ExtResource("2_ejwgg")]
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 177.0
-offset_bottom = 218.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="GarbageShop" parent="." unique_id=2124739603 instance=ExtResource("3_fob5h")]
 visible = false
 layout_mode = 1
-offset_right = 247.0
-offset_bottom = 142.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PausePanel/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

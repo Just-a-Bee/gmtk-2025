@@ -9,7 +9,7 @@ var timeout := "res://blocks/common/timeout.gd"
 var loop_path := "res://blocks/loop.gd"
 
 @onready var player:Player = %Player
-@onready var code_window:CodeWindow = %CodeWindow
+@onready var code_window:CodeWindow = $HUD.code_window
 
 var stack_count:int = 0
 var n:int = 1

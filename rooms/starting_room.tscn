@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bt55xjl53dp8g" path="res://actors/interactable/door.tscn" id="3_pgmiq"]
 [ext_resource type="PackedScene" uid="uid://bkbmrblvovusn" path="res://actors/interactable/npc.tscn" id="4_4r8be"]
 [ext_resource type="Resource" uid="uid://ckm050biqoire" path="res://dialogue/vector.dialogue" id="5_xprn1"]
+[ext_resource type="PackedScene" uid="uid://d16wsvo0btalr" path="res://actors/interactable/garbage_collector.tscn" id="6_pgmiq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7mycd"]
 
@@ -232,3 +233,6 @@ offset_bottom = 728.0
 theme_override_font_sizes/font_size = 30
 text = "Left Click: Attack
 Right Click: Roll"
+
+[node name="StaticBody2D2" parent="." unique_id=691183801 instance=ExtResource("6_pgmiq")]
+position = Vector2(518, 719)
